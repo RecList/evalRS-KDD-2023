@@ -1,1 +1,4 @@
 pandas==2.0.2
+appdirs==1.4.4
+tqdm==4.65
+requests==2.31.0
