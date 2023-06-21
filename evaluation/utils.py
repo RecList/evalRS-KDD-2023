@@ -12,8 +12,6 @@ from pathlib import Path
 import requests
 from tqdm import tqdm
 import zipfile
-import os
-import boto3
 from datetime import datetime
 
 
