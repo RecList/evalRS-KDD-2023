@@ -23,7 +23,6 @@ Organizers will provide in advance an open dataset and tools to help the teams, 
 
 Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
 
-
 ### Important dates
 
 Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official timeline, including start date, paper submission and workshop day.
@@ -68,91 +67,9 @@ For information on how the original dataset was built and what meta-data are ava
 [//]: # (TODO: add a reference to the notebook used to merge the two datasets)
 
 
-## Hack with us
-
-### 1. Try things out
-
-#### Locally
-
-If you just want to run our code on your local computer, download the repo and setup a virtual environment. _NOTE_: the code has been developed and tested with Python 3.8: please use the same version for reproducibility.
-
-```bash
-git clone https://github.com/RecList/evalRS-CIKM-2022
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-#### Via Codespaces
-
-Otherwise, you can just launch the project by using Github Codespaces. Click on the green "code" button on the top of the Github page, select "Codespaces" and click on "Create codespaces on main".
-Be aware, Github Codespaces is still in beta, if you don't have already applied for it, you can do it from here: [Sign up for the Codespaces beta](https://github.com/features/codespaces/signup)
-
-### 2. Run evaluation on pretrained models
-
-### 3. Train models for evaluation
-
-### 4. Expand RecList with your own tests
-
-
-## Hackathon Structure and Rules
-
-### How the Hackathon runs
-
-- can people work on it before the event? 
-- What do we expect as a final submission (a repo? A video? A demo? Slides?) 
-
-
-### Rules and Prizes
-
-_The rules_
-
-_The prizes_
-
-Thanks to our generous sponsors, the following prizes will be awarded (at the sole discretion of the committee):
-
-* a ... prize, xxxx USD, for ...;
-
-
-## FAQ
-
-* any questions we might expect
-
-## Organizers
-
-This Data Challenge focuses on building in the open, and adding lasting artifacts to the community. _EvalRS @ KDD 2023_ is a collaboration between practitioners from industry and academia, who joined forces to make it happen:
-
-* Federico Bianchi, Stanford
-* Patrick John Chia, Coveo
-* Jacopo Tagliabue, NYU / Bauplan
-* Claudio Pomo, Politecnico di Bari
-* Gabriel de Souza P. Moreira, NVIDIA
-* Ciro Greco, Bauplan
-* Davide Eynard, mozilla.ai
-* Fahd Husain, mozilla.ai
-
-## Sponsors
-
-This Data Challenge is open and possible thanks to the generous support of these awesome folks. Make sure to add a star to [our library](https://github.com/jacopotagliabue/reclist) and check them out!
-
-
-<a href="https://mozilla.ai/" target="_blank">
-    <img src="images/mozai.svg" width="200"/>
-</a>
-
-<a href="https://snap.com/en-US" target="_blank">
-    <img src="images/snap.png" width="200"/>
-</a>
-
-<a href="https://www.bauplanlabs.com/" target="_blank">
-    <img src="images/bauplan.png" width="200"/>
-</a>
-
-
-
 ## How to Cite
 
-If you find our code, datasets, tests useful in your work, please cite the original WebConf contribution as well as the EvalRS paper.
+If you find the materials from the workshop useful in your work, please cite the original WebConf contribution and the workshop paper.
 
 _RecList_
 
@@ -189,3 +106,96 @@ _EvalRS_
   copyright = {Creative Commons Attribution 4.0 International}
 }
 ```
+
+## Hack with us
+
+### 1. Get the dataset and do a dry run
+
+Download the repo and setup a virtual environment. _NOTE_: the code has been developed and tested with Python 3.9: please use the same version for reproducibility.
+
+```bash
+git clone https://github.com/RecList/evalRS-CIKM-2022
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+To run a quick evaluation loop with _random predictions_ (no real model!) to familiarize yourself with the evaluation loop, the existing tests and the expected terminal output, just run:
+
+```bash
+python evaluation/EvalRSRunner.py 
+```
+
+# (TODO: modify the code to run a simple tests without any model
+
+### 2. Run evaluation on pretrained models
+
+# (TODO: add a code example in which we re-use an NVIDIA model and run the same eval as above)
+
+### 3. Expand RecList with your own tests
+
+# (TODO: add a code example in which we add one test to reclist)
+
+### BONUS: bring your own model, or train one from scratch
+
+# (TODO: notebook / script showing how to use an existing model, or train a new one )
+
+
+## Hackathon Structure and Rules
+
+### How the Hackathon runs
+
+- can people work on it before the event? 
+- What do we expect as a final submission (a repo? A video? A demo? Slides?) 
+
+
+### Rules and Prizes
+
+_The rules_
+
+_The prizes_
+
+Thanks to our generous sponsors, the following prizes will be awarded (at the sole discretion of the committee):
+
+* a ... prize, xxxx USD, for ...;
+
+
+## FAQ
+
+* any questions we might expect
+
+## Organizers 
+
+This event focuses on building in the open, and adding lasting artifacts to the community. _EvalRS @ KDD 2023_ is a collaboration between practitioners from industry and academia, who joined forces to make it happen:
+# (TODO: add linkedin links for each oragnizer!)
+
+* Federico Bianchi, Stanford 
+* Patrick John Chia, Coveo
+* Jacopo Tagliabue, NYU / Bauplan
+* Claudio Pomo, Politecnico di Bari
+* Gabriel de Souza P. Moreira, NVIDIA
+* Ciro Greco, Bauplan
+* Davide Eynard, mozilla.ai
+* Fahd Husain, mozilla.ai
+
+## Sponsors
+
+This Hackathon and the related social event are possible thanks to the generous support of these awesome folks. Make sure to add a star to [our library](https://github.com/jacopotagliabue/reclist) and check them out!
+
+
+<a href="https://mozilla.ai/" target="_blank">
+    <img src="images/mozai.svg" width="100"/>
+</a>
+
+<a href="https://snap.com/en-US" target="_blank">
+    <img src="images/snap.png" width="100"/>
+</a>
+
+<a href="https://www.bauplanlabs.com/" target="_blank">
+    <img src="images/bauplan.png" width="100"/>
+</a>
+
+
+## Accepted Papers
+
+# (TODO: add a copy of the PDF of the papers in the /papers folder and a table here in the readme as a content index with links, as we did for EvalRS2022)
