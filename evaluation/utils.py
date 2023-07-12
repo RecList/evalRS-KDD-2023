@@ -15,7 +15,7 @@ import zipfile
 from datetime import datetime
 
 
-LFM_DATASET_PATH="https://evalrs.object.las1.coreweave.com/evalrs_dataset_KDD23.zip"
+LFM_DATASET_PATH="https://evalrs.object.lga1.coreweave.com/evalrs_dataset_KDD_2023.zip"
 
 
 def download_with_progress(url, destination):
