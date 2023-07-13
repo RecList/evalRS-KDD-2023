@@ -38,30 +38,9 @@ class ChallengeDataset:
         assert os.path.exists(self.path_to_song_embeddings)
 
         print("Loading dataset.")
-        #self.df_events = pd.read_csv(self.path_to_events, index_col=0, dtype='int32')
-        #self.df_tracks = pd.read_csv(self.path_to_tracks,
-        #                             dtype={
-        #                                 'track_id': 'int32',
-        #                                 'artist_id': 'int32'
-        #                             }).set_index('track_id')
-
-        #self.df_users = pd.read_csv(self.path_to_users,
-        #                            dtype={
-        #                                'user_id': 'int32',
-        #                                'playcount': 'int32',
-        #                                'country_id': 'int32',
-        #                                'timestamp': 'int32',
-        #                                'age': 'int32',
-        #                            }).set_index('user_id')
-
-        #self.df_topics = pd.read_csv(self.path_to_topics).set_index('urlSong')
-
-        #self.df_emotion_tags = pd.read_csv(self.path_to_emotion_tags).set_index('lastfm_id')
-
-        #self.df_social_tags = pd.read_csv(self.path_to_social_tags).set_index('lastfm_id')
         self.df_events = pd.read_parquet(self.path_to_events)
-        self.df_tracks = pd.read_parquet(self.path_to_tracks)
-        self.df_users = pd.read_parquet(self.path_to_users)
+        self.df_tracks = pd.read_parquet(self.path_to_tracks).set_index('track_id')
+        self.df_users = pd.read_parquet(self.path_to_users).set_index('user_id')
         self.df_topics = pd.read_parquet(self.path_to_topics).set_index('urlSong')
         self.df_emotion_tags = pd.read_parquet(self.path_to_emotion_tags).set_index('lastfm_id')
         self.df_social_tags = pd.read_parquet(self.path_to_social_tags).set_index('lastfm_id')
