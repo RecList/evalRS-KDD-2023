@@ -4,7 +4,7 @@
 Listed below are the articles selected for the workshop.
 
 Authors | Title | Paper |
---- | --- | --- | ---
+--- | --- | ---
 Noble et Al | Realistic but Non-Identifiable Synthetic User Data Generation | [paper](/papers/EVALRS2023_paper_1.pdf)
 Malitesta et Al | Disentangling the Performance Puzzle of Multimodal-aware Recommender Systems | [paper](/papers/EVALRS2023_paper_2.pdf)
 Kasalický et Al | Bridging Offline-Online Evaluation with a Time-dependent and Popularity Bias-free Offline Metric for Recommenders | [paper](/papers/EVALRS2023_paper_3.pdf)
