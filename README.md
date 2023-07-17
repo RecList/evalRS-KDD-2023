@@ -4,9 +4,7 @@ well-rounding the evaluation of recommender systems.
 
 [//]: # (TODO: add links here)
 
-<a href=""><img src="https://img.shields.io/badge/Kaggle-Notebook-%2355555)"></a> 
-<a href=""> <img src="https://colab.research.google.com/assets/colab-badge.svg"> </a>
-<a href=""> <img src="https://raw.githubusercontent.com/aleen42/badges/master/src/medium.svg"> </a>
+<a href="https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing">  <img src="https://colab.research.google.com/assets/colab-badge.svg"> </a>
 
 
 [//]: # (TODO: choose image - do we want to change it?)
