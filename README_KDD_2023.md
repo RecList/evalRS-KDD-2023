@@ -77,6 +77,40 @@ _Song Embeddings_: 768-dimensional SentenceBERT embeddings calculated, using the
 ![https://sbert.net/docs/pretrained_models.html](images/embeddings.png)
 
 
+[//]: # (TODO: add link to data notebook below here)
+
+**NOTE** that verse embeddings are quite **large** (~35GB) so they are stored as multiple parquet files, split by initial letter of band name (see a few examples on how to load the embeddings [here]()). If you want to use them in your recommender system, you can download them manually from the following links:
+[
+[3](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_3.parquet)
+[5](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_5.parquet)
+[A](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_A.parquet)
+[B](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_B.parquet)
+[C](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_C.parquet)
+[D](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_D.parquet)
+[E](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_E.parquet)
+[F](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_F.parquet)
+[G](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_G.parquet)
+[H](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_H.parquet)
+[I](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_I.parquet)
+[J](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_J.parquet)
+[K](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_K.parquet)
+[L](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_L.parquet)
+[M](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_M.parquet)
+[N](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_N.parquet)
+[O](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_O.parquet)
+[P](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_P.parquet)
+[Q](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_Q.parquet)
+[R](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_R.parquet)
+[S](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_S.parquet)
+[T](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_T.parquet)
+[U](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_U.parquet)
+[V](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_V.parquet)
+[W](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_W.parquet)
+[X](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_X.parquet)
+[Y](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_Y.parquet)
+[Z](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_Z.parquet)
+].
+
 For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
 For information on how the original datasets were built and what meta-data are available, please refer to these papers: [LFM-1b](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf), [WASABI](https://dl.acm.org/doi/10.1007/s10579-022-09601-8).
 
@@ -86,8 +120,6 @@ For information on how the original datasets were built and what meta-data are a
 If you find the materials from the workshop useful in your work, please cite the original WebConf contribution and the workshop paper.
 
 _RecList_
-
-[//]: # (TODO: do we want to add other papers?)
 
 ```
 @inproceedings{10.1145/3487553.3524215,
