@@ -66,7 +66,7 @@ _Social and Emotion Tags_: a collection of social tags and emotion tags collecte
 ![https://github.com/micbuffa/WasabiDataset/](images/tags.png)
 
 
-_Topics_: a collection of 60-dimensional sparse descriptors representing the topic distribution of a pretrained LDA topic model on 60 topics on English lyrics (model is available [here](https://github.com/micbuffa/WasabiDataset/)).
+_Topics_: a collection of 60-dimensional sparse descriptors representing the topic distribution of a LDA topic model trained on English lyrics (model is available [here](https://github.com/micbuffa/WasabiDataset/)).
 
 
 ![https://github.com/micbuffa/WasabiDataset/](images/topics.png)
@@ -74,11 +74,10 @@ _Topics_: a collection of 60-dimensional sparse descriptors representing the top
 
 _Song Embeddings_: 768-dimensional SentenceBERT embeddings calculated, using the `all-mpnet-base-v2` pretrained model, on song lyrics. For each of the tracks for which lyrics were available (47% of the total number of unique songs), both embeddings calculated on the full *song* and concatenation of embeddings calculated on individual *verses* are available.
 
-![https://github.com/micbuffa/WasabiDataset/](images/embeddings.png)
+![https://sbert.net/docs/pretrained_models.html](images/embeddings.png)
 
 
 For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
-
 For information on how the original datasets were built and what meta-data are available, please refer to these papers: [LFM-1b](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf), [WASABI](https://dl.acm.org/doi/10.1007/s10579-022-09601-8).
 
 [//]: # (TODO: add a reference to the notebook used to merge the two datasets)
