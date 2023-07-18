@@ -62,7 +62,7 @@ _Historical Interactions_: a collection of interactions between users and tracks
 
 For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
 
-For information on how the original dataset was built and what meta-data are available, please refer to [this paper](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf).
+For information on how the original datasets were built and what meta-data are available, please refer to these papers: [LFM-1b](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf), [WASABI](https://dl.acm.org/doi/10.1007/s10579-022-09601-8).
 
 [//]: # (TODO: add a reference to the notebook used to merge the two datasets)
 
@@ -126,19 +126,19 @@ To run a quick evaluation loop with _random predictions_ (no real model!) to fam
 python evaluation/EvalRSRunner.py 
 ```
 
-# (TODO: modify the code to run a simple tests without any model
+[//]: # (TODO: modify the code to run a simple tests without any model)
 
 ### 2. Run evaluation on pretrained models
 
-# (TODO: add a code example in which we re-use an NVIDIA model and run the same eval as above)
+[//]: # (TODO: add a code example in which we re-use an NVIDIA model and run the same eval as above)
 
 ### 3. Expand RecList with your own tests
 
-# (TODO: add a code example in which we add one test to reclist)
+[//]: # (TODO: add a code example in which we add one test to reclist)
 
 ### BONUS: bring your own model, or train one from scratch
 
-# (TODO: notebook / script showing how to use an existing model, or train a new one )
+[//]: # (TODO: notebook / script showing how to use an existing model, or train a new one )
 
 
 ## Hackathon Structure and Rules
@@ -157,7 +157,10 @@ _The prizes_
 
 Thanks to our generous sponsors, the following prizes will be awarded (at the sole discretion of the committee):
 
-* a ... prize, xxxx USD, for ...;
+* a winner prize, 2000 USD, for the best hackathon project;
+* a runner-up prize, 5000 USD, for the second best hackathon project;
+* a best paper award prize of 500 USD
+* a best student paper award prize of 500 USD
 
 
 ## FAQ
@@ -197,4 +200,10 @@ This Hackathon and the related social event are possible thanks to the generous 
 
 ## Accepted Papers
 
-# (TODO: add a copy of the PDF of the papers in the /papers folder and a table here in the readme as a content index with links, as we did for EvalRS2022)
+Authors | Title | Paper | Repo |
+--- | --- | --- | ---
+Noble et Al | Realistic but Non-Identifiable Synthetic User Data Generation | [paper](/final_papers/EVALRS2023_paper_1.pdf) | [code]()
+Malitesta et Al | Disentangling the Performance Puzzle of Multimodal-aware Recommender Systems | [paper](/final_papers/EVALRS2023_paper_2.pdf) | [code]()
+Kasalický et Al | Bridging Offline-Online Evaluation with a Time-dependent and Popularity Bias-free Offline Metric for Recommenders | [paper](/final_papers/EVALRS2023_paper_3.pdf) | [code]()
+Selman et Al | Evaluating Recommendation Systems Using the Power of Embeddings | [paper](/final_papers/EVALRS2023_paper_4.pdf) | [code]()
+Singh et Al | Metric@CustomerN: Evaluating Metrics at a Customer Level in E-Commerce | [paper](/final_papers/EVALRS2023_paper_5.pdf) | [code]()
