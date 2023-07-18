@@ -136,13 +136,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-To run a quick evaluation loop with _random predictions_ (no real model!) to familiarize yourself with the evaluation loop, the existing tests and the expected terminal output, just run:
+To run a quick evaluation loop with _random predictions_ (no real model!) to familiarize yourself with the evaluation loop, the existing tests and the expected terminal output, you can use the `example_model` notebook or [this](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing) colab tutorial
 
-```bash
-python evaluation/EvalRSRunner.py 
-```
-
-[//]: # (TODO: modify the code to run a simple tests without any model)
 
 ### 2. Run evaluation on pretrained models
 
