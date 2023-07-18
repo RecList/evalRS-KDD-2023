@@ -2,7 +2,7 @@
 Official Repository for EvalRS @ KDD 2023, the Second Edition of the workshop on
 well-rounding the evaluation of recommender systems.
 
-[//]: # (TODO: add links here)
+[//]: # (TODO: add links here or comment this section)
 
 <a href=""><img src="https://img.shields.io/badge/Kaggle-Notebook-%2355555)"></a> 
 <a href=""> <img src="https://colab.research.google.com/assets/colab-badge.svg"> </a>
@@ -79,8 +79,6 @@ _Song Embeddings_: 768-dimensional SentenceBERT embeddings calculated, using the
 
 For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
 For information on how the original datasets were built and what meta-data are available, please refer to these papers: [LFM-1b](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf), [WASABI](https://dl.acm.org/doi/10.1007/s10579-022-09601-8).
-
-[//]: # (TODO: add a reference to the notebook used to merge the two datasets)
 
 
 ## How to Cite
@@ -210,6 +208,8 @@ This Hackathon and the related social event are possible thanks to the generous 
 
 
 ## Accepted Papers
+
+[//]: # (TODO: add code links if available )
 
 Authors | Title | Paper | Repo |
 --- | --- | --- | ---
