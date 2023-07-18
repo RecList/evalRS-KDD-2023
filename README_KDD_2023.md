@@ -50,15 +50,32 @@ _Users_: a collection of users and available meta-data, including patterns of co
 
 ![http://www.cp.jku.at/datasets/LFM-1b/](images/users.png)
 
-_Tracks_: a collection of tracks and available meta-data. In the Data Challenge scenario, tracks are the target items for the model, i.e. the collection to chose from when the model needs to provide recommendations.
+_Tracks_: a collection of tracks and available meta-data. In the Data Challenge scenario, tracks are the target items for the model, i.e. the collection to choose from when the model needs to provide recommendations.
 
 ![http://www.cp.jku.at/datasets/LFM-1b/](images/tracks.png)
-
-[//]: # (TODO: add one more picture on the extra fields and their coverage)
 
 _Historical Interactions_: a collection of interactions between users and tracks, that is, listening events, which should be used by your model to build the recommender system for the Data Challenge.
 
 ![http://www.cp.jku.at/datasets/LFM-1b/](images/training.png)
+
+
+To enrich track-related metadata, four addditional objects are provided holding features derived from the WASABI dataset:
+
+_Social and Emotion Tags_: a collection of social tags and emotion tags collected on last.fm, together with a weight that expresses how much they have been used for a given song.
+
+![https://github.com/micbuffa/WasabiDataset/](images/tags.png)
+
+
+_Topics_: a collection of 60-dimensional sparse descriptors representing the topic distribution of a pretrained LDA topic model on 60 topics on English lyrics (model is available [here](https://github.com/micbuffa/WasabiDataset/)).
+
+
+![https://github.com/micbuffa/WasabiDataset/](images/topics.png)
+
+
+_Song Embeddings_: 768-dimensional SentenceBERT embeddings calculated, using the `all-mpnet-base-v2` pretrained model, on song lyrics. For each of the tracks for which lyrics were available (47% of the total number of unique songs), both embeddings calculated on the full *song* and concatenation of embeddings calculated on individual *verses* are available.
+
+![https://github.com/micbuffa/WasabiDataset/](images/embeddings.png)
+
 
 For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
 
