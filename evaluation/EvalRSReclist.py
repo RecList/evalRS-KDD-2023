@@ -28,8 +28,9 @@ class EvalRSReclist(RecList):
         )
         self.dataset = dataset
         self._x_train = dataset._get_train_set(fold=0)
-        self._x_test = dataset._get_test_set(fold=0)[['user_id']]
-        self._y_test = dataset._get_test_set(fold=0).set_index('user_id')
+        subset_of_cols_to_return = ['user_id', 'track_id']
+        self._x_test = dataset._get_test_set(fold=0, subset_of_cols_to_return=subset_of_cols_to_return)[['user_id']]
+        self._y_test = dataset._get_test_set(fold=0, subset_of_cols_to_return=subset_of_cols_to_return).set_index('user_id')
         self._y_preds = predictions
         self.similarity_model = kwargs.get("similarity_model", None)
 
