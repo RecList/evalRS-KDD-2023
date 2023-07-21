@@ -10,6 +10,14 @@ well-rounding the evaluation of recommender systems.
 [//]: # (TODO: choose image - do we want to change it?)
 ![https://reclist.io/kdd2023-cup/](images/back_evalrs.png)
 
+## Quick Start
+
+| Name            | Link     | 
+|-----------------|----------|
+| Tutorial 1 - Exploring the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VXmCpL0YkLkf5_GTgJmLtd2b2A57CNjm?usp=sharing)|
+| Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
+
+
 
 ## Overview
 
