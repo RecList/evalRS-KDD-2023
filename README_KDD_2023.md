@@ -77,9 +77,9 @@ _Song Embeddings_: 768-dimensional SentenceBERT embeddings calculated, using the
 ![https://sbert.net/docs/pretrained_models.html](images/embeddings.png)
 
 
-[//]: # (TODO: add link to data notebook below here)
+**NOTE** that verse embeddings are quite **large** (~35GB) so they are stored as multiple parquet files, split by initial letter of band name (see an example on how to load the embeddings [here](notebooks/eda-on-the-evalrs-dataset.ipynb)). 
 
-**NOTE** that verse embeddings are quite **large** (~35GB) so they are stored as multiple parquet files, split by initial letter of band name (see a few examples on how to load the embeddings [here]()). If you want to use them in your recommender system, you can download them manually from the following links:
+If you want to use them in your model, you can download them manually from the following links:
 [
 [3](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_3.parquet)
 [5](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_5.parquet)
@@ -111,7 +111,10 @@ _Song Embeddings_: 768-dimensional SentenceBERT embeddings calculated, using the
 [Z](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_Z.parquet)
 ].
 
-For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
+For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`. For instance, the EDA notebook showcases some important features of the dataset, and provides a start for exploring the problem - the picture below shows music consumption by hour of day for example:
+
+![Chart for EDA](images/chart.png)
+
 For information on how the original datasets were built and what meta-data are available, please refer to these papers: [LFM-1b](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf), [WASABI](https://dl.acm.org/doi/10.1007/s10579-022-09601-8).
 
 
@@ -166,7 +169,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-To run a quick evaluation loop with _random predictions_ (no real model!) to familiarize yourself with the evaluation loop, the existing tests and the expected terminal output, you can use the `example_model` notebook or [this](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing) colab tutorial
+To run a quick evaluation loop with _random predictions_ (no real model!) to familiarize yourself with the evaluation loop, the existing tests and the expected terminal output, you can use the `example_model` notebook or [this](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing) colab tutorial.
 
 
 ### 2. Run evaluation on pretrained models
