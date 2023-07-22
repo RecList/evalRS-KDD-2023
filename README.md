@@ -2,12 +2,9 @@
 Official Repository for EvalRS @ KDD 2023, the Second Edition of the workshop on
 well-rounding the evaluation of recommender systems.
 
-[//]: # (TODO: add links here)
-
 <a href="https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing">  <img src="https://colab.research.google.com/assets/colab-badge.svg"> </a>
 
-
-[//]: # (TODO: choose image - do we want to change it?)
+[//]: # (TODO: we really need a new image!)
 ![https://reclist.io/kdd2023-cup/](images/back_evalrs.png)
 
 ## Quick Start
@@ -18,17 +15,13 @@ well-rounding the evaluation of recommender systems.
 | Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
 
 
-
 ## Overview
 
 This is the official repository for [EvalRS @ KDD 2023](https://reclist.io/kdd2023-cup/): _a Well-Rounded Evaluation of Recommender Systems_.
 
-During KDD 2023 we will host a pizza hackathon night, where participants will pursue innovative projects for the rounded evaluation of recommender systems. The aim of the hackathon is to evaluate recommender systems across a set of important dimensions (accuracy being _one_ of them) through a principled and re-usable set of abstractions, as provided by [RecList](https://github.com/jacopotagliabue/reclist) 🚀. 
+Aside from papers and talks, we will host a hackathon, where participants will pursue innovative projects for the rounded evaluation of recommender systems. The aim of the hackathon is to evaluate recommender systems across a set of important dimensions (accuracy being _one_ of them) through a principled and re-usable set of abstractions, as provided by [RecList](https://github.com/jacopotagliabue/reclist) 🚀. At the end of the workshop, organizers will sponsor a social event for teams to finalize their projects, mingle with like-minded practitioners and received the monetary prizes for best papers and projects: a link to the event will be added soon!
 
-Organizers will provide in advance an open dataset and tools to help the teams and award monetary prizes for the best projects. Everything will go back to the community as open-source contributions!
-
-Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
-
+This repository provides an open dataset and all the tools necessary to partecipate in the hackathon: everything will go back to the community as open-source contributions. Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
 
 ### Important dates
 
@@ -47,9 +40,9 @@ This Data Challenge is based on the [LFM-1b Dataset, Corpus of Music Listening E
 
 Among all possible datasets, we picked LFM as it suits the spirit and the goal of this Challenge: in particular, thanks to [rich meta-data on users](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf), the dataset allows us to test recommender systems among many non-obvious dimensions, on top of standard Information Retrieval Metrics (for the philosophy behind behavioral testing, please refer to the original [RecList paper](https://arxiv.org/abs/2111.09963)).
 
-To provide richer [meta-data on items](https://arxiv.org/abs/1912.02477), we have extended the LFM-1b dataset with content-based features and user-provided labels from the [WASABI dataset](https://github.com/micbuffa/WasabiDataset) (see more details below).
+Importantly, this dataset is _new_: to provide richer [meta-data](https://arxiv.org/abs/1912.02477), we have extended the LFM-1b dataset with content-based features and user-provided labels from the [WASABI dataset](https://github.com/micbuffa/WasabiDataset) (see details below).
 
-### Data overview
+### Dataset overview
 
 When you run the evaluation loop below, the code will automatically download _a chosen subset of the LFM dataset_, ready to be used (the code will download it only the first time you run it). There are three main objects available from the provided evaluation class:
 
@@ -73,7 +66,6 @@ For information on how the original dataset was built and what meta-data are ava
 
 [//]: # (TODO: add a reference to the notebook used to merge the two datasets)
 
-
 ## Hack with us
 
 You can refer to our collab notebooks to start playing with the dataset and to run a first, very simple model, with RecList.
@@ -83,27 +75,37 @@ You can refer to our collab notebooks to start playing with the dataset and to r
 | Tutorial 1 - Exploring the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VXmCpL0YkLkf5_GTgJmLtd2b2A57CNjm?usp=sharing)|
 | Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
 
-
 ## Hackathon Structure and Rules
 
 ### How the Hackathon runs
 
-We will ask participants to come up with a contribution for the rounded evaluation of RS, leveraging an agreed-upon dataset, open-source code, and tools prepared in advance by the organizers. Contribution details will be intentionally left open-ended, as we would like participants to engage different angles of the problem on a shared set of resources. 
+We will ask participants to come up with a contribution for the rounded evaluation of recommender systems, based on the dataset and tools available in this repository. Contribution details will be intentionally left open-ended, as we would like participants to engage different angles of the problem on a shared set of resources. 
 
 Examples could be operationalizing important notions of robustness, applying and discussing metric definitions from literature, quantifying the trade-off between privacy and accuracy, and so on. The hackathon is a unique opportunity to **live and breathe** the workshop themes, increase chances of multi-disciplinary collaboration, network and discover related work by peers, and contribute valuable materials back to the community. 
 
+### Rules
+
+* The hackathon will start during the workshop and continue at the social gathering.
+* Remote teams that are not able to join KDD in person can participate to the hackathon if willing to operate during the workshop hours: please send a message to `claudio dot pomo at poliba dot it` and `fede at stanford dot edu` if you're interested in partecipating remotely.
+* Teams can start working on their project before KDD, provided they will also work during the event and engage the other participants during the workshop.
+* The only dataset that can be used is the one provided with this repository (you can, of course, _augment_ it if you see fit): given the open-ended nature of the challenge, we are happy for participants to choose whatever tool they desire: for example, you can bring your own model or use the ones we provide if the point you are making is independent from any modelling choice. Please note that if you focus on offline code-based evaluation, re-using and extending the provided RecList provides bonus points, as our goal is to progressively standardize testing through a common library.
+* The deliverables for each team are two: 1) a public GitHub repository with an open source license containing whatever has been used for the project (e.g. code, materials, slides, charts); 2) a video elevator pitch of at <3 minutes during which the team explains (using whatever narrative device: a demo, a demo and some slides, animations etc.) their project: motivation, execution, learnings and why it is cool.
+* Based on the materials submitted and the elevator pitch, the organizers will determine the winners at their sole discretion and award the prizes at the social event the evening of Aug. 7th (location TBD).
+
 ### Prizes
 
-Here is the breakdown of the prizes we are going to give during the event:
+Here is the breakdown of the prizes that will be awarded:
 
 * $500 best student paper
 * $500 best paper
 * $500 runner-up best hackathon project
 * $2000 best hackathon project
 
+The prizes are generously offered by _mozilla.ai_: winners should contact `fahd at mozilla dot ai` for the delivery.
+
 ## Organizers
 
-This Data Challenge focuses on building in the open, and adding lasting artifacts to the community. _EvalRS @ KDD 2023_ is a collaboration between practitioners from industry and academia, who joined forces to make it happen:
+This workshop focuses on building in the open, and adding lasting artifacts to the community. _EvalRS @ KDD 2023_ is a collaboration between practitioners from industry and academia, who joined forces to make it happen:
 
 * Federico Bianchi, Stanford
 * Patrick John Chia, Coveo
@@ -135,15 +137,11 @@ This Data Challenge is open and possible thanks to the generous support of these
     <img src="https://costanoa.vc/wp-content/themes/costanoa/img/logo-wide-dark2@2x.svg" width="200"/>
 </a>
 
-
-
 ## How to Cite
 
 If you find our code, datasets, tests useful in your work, please cite the original WebConf contribution as well as the EvalRS paper.
 
 _RecList_
-
-[//]: # (TODO: do we want to add other papers?)
 
 ```
 @inproceedings{10.1145/3487553.3524215,
