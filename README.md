@@ -9,7 +9,7 @@ well-rounding the evaluation of recommender systems.
 
 ## Status
 
-_The repository is mostly stable, but check back often for additional material and tools!_
+_The repository is mostly stable (i.e. you can start hacking!), but check back often for additional material and tools, and possibly minor modifications to the sample code!_
 
 ## Quick Start
 
