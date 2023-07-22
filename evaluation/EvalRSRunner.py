@@ -15,17 +15,22 @@ class ChallengeDataset:
     def __init__(
         self,
         num_folds:int = 1,
-        seed: int = None,
-        force_download: bool = False
+        seed: int = 42,
+        force_download: bool = False,
+        dataset_out_path = None,
+        folded_dataset_split = True,
+        sample_users_perc=0.25,
+        min_user_item_freq=10,
     ):
-        
         # download dataset
-        self.path_to_dataset = os.path.join(get_cache_directory(), 'evalrs_dataset_KDD_2023')
+        output_path = dataset_out_path or get_cache_directory()
+        self.path_to_dataset = os.path.join(output_path, 'evalrs_dataset_KDD_2023')
         if not os.path.exists(self.path_to_dataset) or force_download:
             print("Downloading LFM dataset...")
-            download_with_progress(LFM_DATASET_PATH, os.path.join(get_cache_directory(), 'evalrs_dataset.zip'))
-            decompress_zipfile(os.path.join(get_cache_directory(), 'evalrs_dataset.zip'),
-                               get_cache_directory())
+            download_path =  os.path.join(output_path, 'evalrs_dataset.zip')
+            download_with_progress(LFM_DATASET_PATH, download_path)
+            decompress_zipfile(download_path,
+                               output_path)
         else:
             print("LFM dataset already downloaded. Skipping download.")
 
@@ -54,11 +59,19 @@ class ChallengeDataset:
         self.df_social_tags = pd.read_parquet(self.path_to_social_tags).set_index('lastfm_id')
         self.df_song_embeddings = pd.read_parquet(self.path_to_song_embeddings).set_index('urlSong')
 
-        print("Generating Train/Test Split.")
-        self.num_folds = num_folds
         self.unique_user_ids_df = self.df_events[['user_id']].drop_duplicates()
-        self._random_state = int(time.time()) if not seed else seed
-        self._train_set, self._test_set = self._generate_folds(self.num_folds, self._random_state)
+        
+        self.folded_dataset_split = folded_dataset_split
+        if self.folded_dataset_split:
+            print("Generating Train/Test Split.")
+            self.num_folds = num_folds        
+            self._random_state = int(time.time()) if not seed else seed
+            self._train_set, self._test_set = self._generate_folds(self.num_folds, self._random_state, 
+                                                                   frac=sample_users_perc,
+                                                                   min_user_item_freq=min_user_item_freq)
+        else:
+            self._train_set, self._test_set = self.split_train_test_last_interaction(sample_users_perc=sample_users_perc,
+                                                                                     min_user_item_freq=min_user_item_freq)
 
         print("Generating dataset hashes.")
         self._events_hash = hashlib.sha256(pd.util.hash_pandas_object(self.df_events.sample(n=1000,
@@ -110,8 +123,34 @@ class ChallengeDataset:
             # print("THERE ARE {} VALID USERS; MIN VERTICES {}".format(len(valid_users), user_counts['counts'].min()))
 
         return valid_users, valid_tracks
+    
+    def filter_events_by_min_user_item_freq(self, event_df, k):       
+        # perform k-core filter; threshold of 10
+        valid_user_ids, valid_track_ids = self._k_core_filter(event_df[['user_id','track_id']], k=k)
 
-    def _generate_folds(self, num_folds: int, seed: int, frac=0.25) -> Tuple[pd.DataFrame, pd.DataFrame]:
+        event_df = event_df[event_df['user_id'].isin(valid_user_ids)]
+        event_df = event_df[event_df['track_id'].isin(valid_track_ids)]
+        return event_df
+    
+    def split_train_test_last_interaction(self, sample_users_perc=1.0, min_user_item_freq=10):
+        events_df = self.df_events
+        if sample_users_perc < 1.0:
+            sampled_users = events_df['user_id'].drop_duplicates().sample(frac=sample_users_perc, random_state=42)
+            events_df = events_df[events_df['user_id'].isin(sampled_users)]
+        
+        events_df = self.filter_events_by_min_user_item_freq(events_df, k=min_user_item_freq)
+        
+        last_ts_event_per_user = events_df.groupby("user_id")["timestamp"].max().reset_index()
+        events_ts_df = events_df.merge(last_ts_event_per_user, on=["user_id", "timestamp"], how="outer", indicator=True)
+        test_df = events_ts_df[events_ts_df['_merge'] == 'both']
+        del test_df["_merge"]
+        train_df = events_ts_df[events_ts_df['_merge'] == 'left_only']
+        del train_df["_merge"]
+        
+        return train_df, test_df
+        
+
+    def _generate_folds(self, num_folds: int, seed: int, frac=0.25, min_user_item_freq=10) -> Tuple[pd.DataFrame, pd.DataFrame]:
 
         fold_ids = [(self.unique_user_ids_df.sample(frac=frac, random_state=seed+_)
                      .reset_index(drop=True)
@@ -123,11 +162,7 @@ class ChallengeDataset:
         train_dfs_idx = []
         for fold in range(num_folds):
             df_fold_events = self.df_events[self.df_events['user_id'].isin(df_fold_user_ids[fold])]
-            # perform k-core filter; threshold of 10
-            valid_user_ids, valid_track_ids = self._k_core_filter(df_fold_events[['user_id','track_id']], k=10)
-
-            df_fold_events = df_fold_events[df_fold_events['user_id'].isin(valid_user_ids)]
-            df_fold_events = df_fold_events[df_fold_events['track_id'].isin(valid_track_ids)]
+            df_fold_events = self.filter_events_by_min_user_item_freq(df_fold_events, k=min_user_item_freq)
 
             df_groupby = df_fold_events.groupby(by='user_id', as_index=False)
 
@@ -153,23 +188,34 @@ class ChallengeDataset:
         # print('====')
         return df_train, df_test
 
-    def _get_train_set(self, fold: int) -> pd.DataFrame:
-        assert fold <= self._test_set['fold'].max()
-        train_index =self._train_set[self._train_set['fold']==fold]['index']
-        # test_index = self._test_set[self._test_set['fold']==fold].index
-        # fold_users = self._fold_ids[self._fold_ids['fold']==fold]['user_id']
-        # train_fold = (self.df_events.loc[self.df_events['user_id'].isin(fold_users)])
+    def _get_train_set(self, fold: int = None) -> pd.DataFrame:
+        if self.folded_dataset_split:
+            assert fold <= self._test_set['fold'].max()
+            train_index =self._train_set[self._train_set['fold']==fold]['index']
+            # test_index = self._test_set[self._test_set['fold']==fold].index
+            # fold_users = self._fold_ids[self._fold_ids['fold']==fold]['user_id']
+            # train_fold = (self.df_events.loc[self.df_events['user_id'].isin(fold_users)])
 
-        return self.df_events.loc[train_index]
-
-    def _get_test_set(self, fold: int, limit: int = None, seed: int =0) -> pd.DataFrame:
-        subset_of_cols_to_return = ['user_id', 'track_id']
-
-        assert fold <= self._test_set['fold'].max()
-        test_set = self._test_set[self._test_set['fold'] == fold][subset_of_cols_to_return]
-        if limit:
-            return test_set.sample(n=limit, random_state=seed)
+            return self.df_events.loc[train_index]
+    
         else:
+            return self._train_set
+
+    def _get_test_set(self, fold: int = None, limit: int = None, seed: int = 0, subset_of_cols_to_return=None) -> pd.DataFrame:
+        if self.folded_dataset_split:            
+
+            assert fold <= self._test_set['fold'].max()
+            test_set = self._test_set[self._test_set['fold'] == fold][subset_of_cols_to_return]
+            if subset_of_cols_to_return:
+                test_set = test_set[subset_of_cols_to_return]
+            if limit:
+                return test_set.sample(n=limit, random_state=seed)
+            else:
+                return test_set
+        else:
+            test_set = self._test_set
+            if subset_of_cols_to_return:
+                test_set = test_set[subset_of_cols_to_return]
             return test_set
 
     def get_sample_train_test(self):
