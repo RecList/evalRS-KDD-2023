@@ -1,6 +1,5 @@
 # EvalRS-KDD-2023
-Official Repository for EvalRS @ KDD 2023, the Second Edition of the workshop on
-well-rounding the evaluation of recommender systems.
+Official Repository for EvalRS @ KDD 2023, the Second Edition of the workshop on well-rounded evaluation of recommender systems.
 
 <a href="https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing">  <img src="https://colab.research.google.com/assets/colab-badge.svg"> </a>
 
@@ -31,7 +30,7 @@ All accepted papers for EvalRS are available [here](https://github.com/RecList/e
 
 ### Important dates
 
-Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official timeline, including the start date, paper submission, and workshop day.
+Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official timeline, including the start date, paper submission, and workshop schedule.
 
 ### Quick links
 
@@ -42,11 +41,11 @@ Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official tim
 
 ## Dataset and target scenario
 
-This hackathon is based on the [LFM-1b Dataset, Corpus of Music Listening Events for Music Recommendation](http://www.cp.jku.at/datasets/LFM-1b/). The use case is a typical user-item recommendation scenario: at _prediction time_, we have a set of target users to which we need to recommend a set of songs to listen to. To achieve that, we have historical anonymous data on previous music consumptions from users in the same setting.
+This hackathon is based on the [LFM-1b Dataset, Corpus of Music Listening Events for Music Recommendation](http://www.cp.jku.at/datasets/LFM-1b/). The use case is a typical user-item recommendation scenario: at _prediction time_, we get a set of users: for each user, our model recommends a set of songs to listen to, based on historical data on previous music consumption.
 
 We picked LFM as it suits the spirit and the goal of this event: in particular, thanks to [rich meta-data on users](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf), the dataset allows us to test recommender systems among many non-obvious dimensions, on top of standard Information Retrieval Metrics (for the philosophy behind behavioral testing, please refer to the original [RecList paper](https://arxiv.org/abs/2111.09963)).
 
-Importantly, this dataset is _new_: to provide richer [meta-data](https://arxiv.org/abs/1912.02477), we have extended the LFM-1b dataset with content-based features and user-provided labels from the [WASABI dataset](https://github.com/micbuffa/WasabiDataset) (see below).
+Importantly, the dataset of this workshop is a _new_, augmented version of the one used [last year at CIKM](https://github.com/RecList/evalRS-CIKM-2022): to provide richer [item meta-data](https://arxiv.org/abs/1912.02477), we extended the LFM-1b dataset with content-based features and user-provided labels from the [WASABI dataset](https://github.com/micbuffa/WasabiDataset) (see below).
 
 ### Dataset overview
 
@@ -95,7 +94,7 @@ Examples could be operationalizing important notions of robustness, applying and
 * Remote teams that are not able to join KDD in person can participate to the hackathon if willing to operate during the workshop hours: please send a message to `claudio dot pomo at poliba dot it` and `fede at stanford dot edu` if you're interested in partecipating remotely.
 * Teams can start working on their project before KDD, provided they will also work during the event and engage the other participants during the workshop.
 * The only dataset that can be used is the one provided with this repository (you can, of course, _augment_ it if you see fit): given the open-ended nature of the challenge, we are happy for participants to choose whatever tool they desire: for example, you can bring your own model or use the ones we provide if the point you are making is independent from any modelling choice. Please note that if you focus on offline code-based evaluation, re-using and extending the provided RecList provides bonus points, as our goal is to progressively standardize testing through a common library.
-* The deliverables for each team are two: 1) a public GitHub repository with an open source license containing whatever has been used for the project (e.g. code, materials, slides, charts); 2) a video elevator pitch of at <3 minutes during which the team explains (using whatever narrative device: a demo, a demo and some slides, animations etc.) their project: motivation, execution, learnings and why it is cool.
+* The deliverables for each team are two: 1) a public GitHub repository with an open source license containing whatever has been used for the project (e.g. code, materials, slides, charts); 2) a elevator pitch (video duration needs to be less than 3 minutes) to explain (using any narrative device: e.g. a demo, a demo and some slides, animations) the project: motivation, execution, learnings and why it is cool.
 * Based on the materials submitted and the elevator pitch, the organizers will determine the winners at their sole discretion and award the prizes at the social event the evening of Aug. 7th (location TBD).
 
 ### Prizes
