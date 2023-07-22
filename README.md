@@ -23,16 +23,16 @@ well-rounding the evaluation of recommender systems.
 
 This is the official repository for [EvalRS @ KDD 2023](https://reclist.io/kdd2023-cup/): _a Well-Rounded Evaluation of Recommender Systems_.
 
-During KDD 2023 we will host a pizza hackathon night, where participants will pursue innovative projects for the rounded evaluation of recommender systems. The aim of the hackathon is to evaluate recommender systems across a set of important dimensions (accuracy being _one_ of them) through a principled and re-usable sets of abstractions, as provided by [RecList](https://github.com/jacopotagliabue/reclist) 🚀. 
+During KDD 2023 we will host a pizza hackathon night, where participants will pursue innovative projects for the rounded evaluation of recommender systems. The aim of the hackathon is to evaluate recommender systems across a set of important dimensions (accuracy being _one_ of them) through a principled and re-usable set of abstractions, as provided by [RecList](https://github.com/jacopotagliabue/reclist) 🚀. 
 
-Organizers will provide in advance an open dataset and tools to help the teams, and award monetary prizes for the best projects. Everything will go back to the community as open source contributions!
+Organizers will provide in advance an open dataset and tools to help the teams and award monetary prizes for the best projects. Everything will go back to the community as open-source contributions!
 
 Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
 
 
 ### Important dates
 
-Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official timeline, including start date, paper submission and workshop day.
+Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official timeline, including the start date, paper submission, and workshop day.
 
 ### Quick links
 
@@ -53,11 +53,11 @@ To provide richer [meta-data on items](https://arxiv.org/abs/1912.02477), we hav
 
 When you run the evaluation loop below, the code will automatically download _a chosen subset of the LFM dataset_, ready to be used (the code will download it only the first time you run it). There are three main objects available from the provided evaluation class:
 
-_Users_: a collection of users and available meta-data, including patterns of consumption, demographics etc.. In the Data Challenge scenario, the user Id is the query item for the model, which is asked to recommend songs to the user.
+_Users_: a collection of users and available meta-data, including patterns of consumption, demographics etc... In the Data Challenge scenario, the user Id is the query item for the model, which is asked to recommend songs to the user.
 
 ![http://www.cp.jku.at/datasets/LFM-1b/](images/users.png)
 
-_Tracks_: a collection of tracks and available meta-data. In the Data Challenge scenario, tracks are the target items for the model, i.e. the collection to chose from when the model needs to provide recommendations.
+_Tracks_: a collection of tracks and available meta-data. In the Data Challenge scenario, tracks are the target items for the model, i.e. the collection to choose from when the model needs to provide recommendations.
 
 ![http://www.cp.jku.at/datasets/LFM-1b/](images/tracks.png)
 
@@ -67,7 +67,7 @@ _Historical Interactions_: a collection of interactions between users and tracks
 
 ![http://www.cp.jku.at/datasets/LFM-1b/](images/training.png)
 
-For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
+For in-depth explanations of the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
 
 For information on how the original dataset was built and what meta-data are available, please refer to [this paper](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf).
 
