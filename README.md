@@ -7,6 +7,10 @@ well-rounding the evaluation of recommender systems.
 [//]: # (TODO: we really need a new image!)
 ![https://reclist.io/kdd2023-cup/](images/back_evalrs.png)
 
+## Status
+
+_The repository is mostly stable, but check back often for additional material and tools!_
+
 ## Quick Start
 
 | Name            | Link     | 
