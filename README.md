@@ -92,6 +92,15 @@ We will ask participants to come up with a contribution for the rounded evaluati
 
 Examples could be operationalizing important notions of robustness, applying and discussing metric definitions from literature, quantifying the trade-off between privacy and accuracy, and so on. The hackathon is a unique opportunity to **live and breathe** the workshop themes, increase chances of multi-disciplinary collaboration, network and discover related work by peers, and contribute valuable materials back to the community. 
 
+### Prizes
+
+Here is the breakdown of the prizes we are going to give during the event:
+
+* $500 best student paper
+* $500 best paper
+* $500 runner-up best hackathon project
+* $2000 best hackathon project
+
 ## Organizers
 
 This Data Challenge focuses on building in the open, and adding lasting artifacts to the community. _EvalRS @ KDD 2023_ is a collaboration between practitioners from industry and academia, who joined forces to make it happen:
@@ -120,6 +129,10 @@ This Data Challenge is open and possible thanks to the generous support of these
 
 <a href="https://www.bauplanlabs.com/" target="_blank">
     <img src="images/bauplan.png" width="200"/>
+</a>
+
+<a href="https://costanoa.vc/" target="_blank">
+    <img src="https://costanoa.vc/wp-content/themes/costanoa/img/logo-wide-dark2@2x.svg" width="200"/>
 </a>
 
 
