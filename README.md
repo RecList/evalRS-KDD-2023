@@ -1,46 +1,136 @@
-# evalRS-KDD-2023
-Official Repository for EvalRS @ KDD 2023: a Rounded Evaluation of Recommender Systems
+# EvalRS-KDD-2023
+Official Repository for EvalRS @ KDD 2023, the Second Edition of the workshop on
+well-rounding the evaluation of recommender systems.
+
+[//]: # (TODO: add links here)
+
+<a href="https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing">  <img src="https://colab.research.google.com/assets/colab-badge.svg"> </a>
+
+
+[//]: # (TODO: choose image - do we want to change it?)
+![https://reclist.io/kdd2023-cup/](images/back_evalrs.png)
+
+## Quick Start
+
+| Name            | Link     | 
+|-----------------|----------|
+| Tutorial 1 - Exploring the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VXmCpL0YkLkf5_GTgJmLtd2b2A57CNjm?usp=sharing)|
+| Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
+
+
 
 ## Overview
 
-EvalRS 2023 will be held at [KDD 2023](https://kdd.org/kdd2023/), August 7th (Long Beach, CA). 
+This is the official repository for [EvalRS @ KDD 2023](https://reclist.io/kdd2023-cup/): _a Well-Rounded Evaluation of Recommender Systems_.
 
-Following the success of the [first edition](https://www.nature.com/articles/s42256-022-00606-0), the workshop is back with the same focus on [rounded evaluation of recommender systems](https://arxiv.org/abs/2207.05772) (fairness, robustness and trustworthyness), but with a new, expanded format.
+During KDD 2023 we will host a pizza hackathon night, where participants will pursue innovative projects for the rounded evaluation of recommender systems. The aim of the hackathon is to evaluate recommender systems across a set of important dimensions (accuracy being _one_ of them) through a principled and re-usable sets of abstractions, as provided by [RecList](https://github.com/jacopotagliabue/reclist) 🚀. 
 
-For the first time, the event will mix a traditional paper track and an open-source _hackaton_, inspiring participants to "live and breath" the evaluation challenges with working code. Following our tradition, we will run the entire workshop in the open, and give back to the community all the artifacts produced for the event.
+Organizers will provide in advance an open dataset and tools to help the teams, and award monetary prizes for the best projects. Everything will go back to the community as open source contributions!
 
-Thanks to our sponsors, we will award monetary prizes for innovative papers, student contributions and best projects.
+Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
 
-Check back soon this repo and the official website for keynote speakers and final logistics details: if you have questions about paper submission or partecipation during KDD, send us a note at `fede a_t stanford d_o_t edu` or `jacopo d_o_t tagliabue a_t nyu d_o_t edu`.
 
-_Quick links_:
+### Important dates
 
-* The workshop [website](https://reclist.io/kdd2023-cup/) (agenda, speakers, logistics)
-* The paper submission [link](https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FEvalRS2023) (to submit your paper)
-* The workshop [paper](https://arxiv.org/pdf/2304.07145.pdf) (scholarly presentation, background, literature)
-* RecList OS [library](https://github.com/jacopotagliabue/reclist) and [paper](https://arxiv.org/abs/2111.09963) (it will be used for the event)
-* EvalRS 2022 - [data challenge](https://github.com/RecList/evalRS-CIKM-2022), [paper](https://arxiv.org/abs/2207.05772), [keynotes](https://www.youtube.com/playlist?list=PLvvTyLx3m9oRW3K1OUka0LJWJEqR1tysD), [after-math](https://www.nature.com/articles/s42256-022-00606-0)
+Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official timeline, including start date, paper submission and workshop day.
+
+### Quick links
+
+* 🛖 [EvalRS website](https://reclist.io/kdd2023-cup/)
+* 📚 [EvalRS paper](https://arxiv.org/abs/2304.07145)
+* 📖 [RecList website](https://reclist.io/)
+
+
+## Dataset and target scenario
+
+This Data Challenge is based on the [LFM-1b Dataset, Corpus of Music Listening Events for Music Recommendation](http://www.cp.jku.at/datasets/LFM-1b/). The use case is a typical user-item recommendation scenario: at _prediction time_, we have a set of target users to which we need to recommend a set of songs to listen to. To achieve that, we have historical anonymous data on previous music consumptions from users in the same setting.
+
+Among all possible datasets, we picked LFM as it suits the spirit and the goal of this Challenge: in particular, thanks to [rich meta-data on users](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf), the dataset allows us to test recommender systems among many non-obvious dimensions, on top of standard Information Retrieval Metrics (for the philosophy behind behavioral testing, please refer to the original [RecList paper](https://arxiv.org/abs/2111.09963)).
+
+To provide richer [meta-data on items](https://arxiv.org/abs/1912.02477), we have extended the LFM-1b dataset with content-based features and user-provided labels from the [WASABI dataset](https://github.com/micbuffa/WasabiDataset) (see more details below).
+
+### Data overview
+
+When you run the evaluation loop below, the code will automatically download _a chosen subset of the LFM dataset_, ready to be used (the code will download it only the first time you run it). There are three main objects available from the provided evaluation class:
+
+_Users_: a collection of users and available meta-data, including patterns of consumption, demographics etc.. In the Data Challenge scenario, the user Id is the query item for the model, which is asked to recommend songs to the user.
+
+![http://www.cp.jku.at/datasets/LFM-1b/](images/users.png)
+
+_Tracks_: a collection of tracks and available meta-data. In the Data Challenge scenario, tracks are the target items for the model, i.e. the collection to chose from when the model needs to provide recommendations.
+
+![http://www.cp.jku.at/datasets/LFM-1b/](images/tracks.png)
+
+[//]: # (TODO: add one more picture on the extra fields and their coverage)
+
+_Historical Interactions_: a collection of interactions between users and tracks, that is, listening events, which should be used by your model to build the recommender system for the Data Challenge.
+
+![http://www.cp.jku.at/datasets/LFM-1b/](images/training.png)
+
+For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
+
+For information on how the original dataset was built and what meta-data are available, please refer to [this paper](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf).
+
+[//]: # (TODO: add a reference to the notebook used to merge the two datasets)
+
+
+## Hack with us
+
+You can refer to our collab notebooks to start playing with the dataset and to run a first, very simple model, with RecList.
+
+| Name            | Link     | 
+|-----------------|----------|
+| Tutorial 1 - Exploring the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VXmCpL0YkLkf5_GTgJmLtd2b2A57CNjm?usp=sharing)|
+| Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
+
+
+## Hackathon Structure and Rules
+
+### How the Hackathon runs
+
+We will ask participants to come up with a contribution for the rounded evaluation of RS, leveraging an agreed-upon dataset, open-source code, and tools prepared in advance by the organizers. Contribution details will be intentionally left open-ended, as we would like participants to engage different angles of the problem on a shared set of resources. 
+
+Examples could be operationalizing important notions of robustness, applying and discussing metric definitions from literature, quantifying the trade-off between privacy and accuracy, and so on. The hackathon is a unique opportunity to **live and breathe** the workshop themes, increase chances of multi-disciplinary collaboration, network and discover related work by peers, and contribute valuable materials back to the community. 
 
 ## Organizers
 
-EvalRS 2023 is brought to you with love by:
+This Data Challenge focuses on building in the open, and adding lasting artifacts to the community. _EvalRS @ KDD 2023_ is a collaboration between practitioners from industry and academia, who joined forces to make it happen:
 
-* [Federico Bianchi](https://www.linkedin.com/in/federico-bianchi-3b7998121/) - Stanford
-* [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia-b0a34019b/) - Coveo
-* [Ciro Greco](https://www.linkedin.com/in/cirogreco/) - Bauplan
-* [Gabriel Moreira](https://www.linkedin.com/in/gabrielspmoreira/) - NVIDIA
-* [Claudio Pomo](https://www.linkedin.com/in/claudiopomo/) - Politecnico di Bari
-* [Davide Eynard](https://www.linkedin.com/in/deynard/) - Mozilla AI
-* [Fahd Husain](https://www.linkedin.com/in/fahdhusain/) - Mozilla AI
-* [Jacopo Tagliabue](https://www.linkedin.com/in/jacopotagliabue) - NYU, Bauplan
+* Federico Bianchi, Stanford
+* Patrick John Chia, Coveo
+* Jacopo Tagliabue, NYU / Bauplan
+* Claudio Pomo, Politecnico di Bari
+* Gabriel de Souza P. Moreira, NVIDIA
+* Ciro Greco, Bauplan
+* Davide Eynard, mozilla.ai
+* Fahd Husain, mozilla.ai
 
 ## Sponsors
 
-The event is supported by [Mozilla AI](https://mozilla.ai/). Exciting news coming soon!
+This Data Challenge is open and possible thanks to the generous support of these awesome folks. Make sure to add a star to [our library](https://github.com/jacopotagliabue/reclist) and check them out!
 
-## Citations
 
-When citing our work, please cite both the _RecList_ original paper and the workshop presentation:
+<a href="https://mozilla.ai/" target="_blank">
+    <img src="images/mozai.svg" width="200"/>
+</a>
+
+<a href="https://snap.com/en-US" target="_blank">
+    <img src="images/snap.png" width="200"/>
+</a>
+
+<a href="https://www.bauplanlabs.com/" target="_blank">
+    <img src="images/bauplan.png" width="200"/>
+</a>
+
+
+
+## How to Cite
+
+If you find our code, datasets, tests useful in your work, please cite the original WebConf contribution as well as the EvalRS paper.
+
+_RecList_
+
+[//]: # (TODO: do we want to add other papers?)
 
 ```
 @inproceedings{10.1145/3487553.3524215,
@@ -60,14 +150,16 @@ When citing our work, please cite both the _RecList_ original paper and the work
 }
 ```
 
+_EvalRS_
+
 ```
-@inproceedings{Bianchi2023EvalRS2W,
-  title={EvalRS 2023. Well-Rounded Recommender Systems For Real-World Deployments},
-  author={Federico Bianchi and Patrick John Chia and Ciro Greco and Claudio Pomo and Gabriel de Souza Pereira Moreira and Davide Eynard and Fahd Husain and Jacopo Tagliabue},
-  year={2023}
+@misc{https://doi.org/10.48550/arXiv.2304.07145,
+  doi = {10.48550/ARXIV.2304.07145},
+  url = {https://arxiv.org/abs/2304.07145},
+  author = {Federico Bianchi and Patrick John Chia and Ciro Greco and Claudio Pomo and Gabriel Moreira and Davide Eynard and Fahd Husain and Jacopo Tagliabue},
+  title = {EvalRS 2023. Well-Rounded Recommender Systems For Real-World Deployments},
+  publisher = {arXiv},
+  year = {2023},
+  copyright = {Creative Commons Attribution 4.0 International}
 }
 ```
-
-## License
-
-All the code is released "as is" under an open MIT license.
