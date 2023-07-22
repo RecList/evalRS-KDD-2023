@@ -76,53 +76,21 @@ For information on how the original dataset was built and what meta-data are ava
 
 ## Hack with us
 
-### 1. Try things out
+You can refer to our collab notebooks to start playing with the dataset and to run a first, very simple model, with RecList.
 
-#### Locally
-
-If you just want to run our code on your local computer, download the repo and setup a virtual environment. _NOTE_: the code has been developed and tested with Python 3.8: please use the same version for reproducibility.
-
-```bash
-git clone https://github.com/RecList/evalRS-CIKM-2022
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-#### Via Codespaces
-
-Otherwise, you can just launch the project by using Github Codespaces. Click on the green "code" button on the top of the Github page, select "Codespaces" and click on "Create codespaces on main".
-Be aware, Github Codespaces is still in beta, if you don't have already applied for it, you can do it from here: [Sign up for the Codespaces beta](https://github.com/features/codespaces/signup)
-
-### 2. Run evaluation on pretrained models
-
-### 3. Train models for evaluation
-
-### 4. Expand RecList with your own tests
+| Name            | Link     | 
+|-----------------|----------|
+| Tutorial 1 - Exploring the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VXmCpL0YkLkf5_GTgJmLtd2b2A57CNjm?usp=sharing)|
+| Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
 
 
 ## Hackathon Structure and Rules
 
 ### How the Hackathon runs
 
-- can people work on it before the event? 
-- What do we expect as a final submission (a repo? A video? A demo? Slides?) 
+We will ask participants to come up with a contribution for the rounded evaluation of RS, leveraging an agreed-upon dataset, open-source code, and tools prepared in advance by the organizers. Contribution details will be intentionally left open-ended, as we would like participants to engage different angles of the problem on a shared set of resources. 
 
-
-### Rules and Prizes
-
-_The rules_
-
-_The prizes_
-
-Thanks to our generous sponsors, the following prizes will be awarded (at the sole discretion of the committee):
-
-* a ... prize, xxxx USD, for ...;
-
-
-## FAQ
-
-* any questions we might expect
+Examples could be operationalizing important notions of robustness, applying and discussing metric definitions from literature, quantifying the trade-off between privacy and accuracy, and so on. The hackathon is a unique opportunity to **live and breathe** the workshop themes, increase chances of multi-disciplinary collaboration, network and discover related work by peers, and contribute valuable materials back to the community. 
 
 ## Organizers
 
