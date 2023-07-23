@@ -205,7 +205,7 @@ class ChallengeDataset:
         if self.folded_dataset_split:            
 
             assert fold <= self._test_set['fold'].max()
-            test_set = self._test_set[self._test_set['fold'] == fold][subset_of_cols_to_return]
+            test_set = self._test_set[self._test_set['fold'] == fold]
             if subset_of_cols_to_return:
                 test_set = test_set[subset_of_cols_to_return]
             if limit:
