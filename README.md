@@ -128,18 +128,18 @@ Here is the breakdown of the prizes that will be awarded:
 
 The prizes are generously offered by _mozilla.ai_: winners should contact `fahd at mozilla dot ai` for the delivery.
 
-## Organizers
+## Organizers 
 
-This workshop focuses on building in the open, and adding lasting artifacts to the community. _EvalRS @ KDD 2023_ is a collaboration between practitioners from industry and academia, who joined forces to make it happen:
+This event focuses on building in the open, and adding lasting artifacts to the community. _EvalRS @ KDD 2023_ is a collaboration between practitioners from industry and academia, who joined forces to make it happen:
 
-* Federico Bianchi, Stanford
-* Patrick John Chia, Coveo
-* Jacopo Tagliabue, NYU / Bauplan
-* Claudio Pomo, Politecnico di Bari
-* Gabriel de Souza P. Moreira, NVIDIA
-* Ciro Greco, Bauplan
-* Davide Eynard, mozilla.ai
-* Fahd Husain, mozilla.ai
+* [Federico Bianchi](https://www.linkedin.com/in/federico-bianchi-3b7998121/), Stanford 
+* [Patrick John Chia](https://www.linkedin.com/in/patrick-john-chia/), Coveo
+* [Jacopo Tagliabue](https://www.linkedin.com/in/jacopotagliabue/), NYU / Bauplan
+* [Claudio Pomo](https://www.linkedin.com/in/claudiopomo/), Politecnico di Bari
+* [Gabriel de Souza P. Moreira](https://www.linkedin.com/in/gabrielspmoreira/), NVIDIA
+* [Ciro Greco](https://www.linkedin.com/in/cirogreco/), Bauplan
+* [Davide Eynard](https://www.linkedin.com/in/deynard/), mozilla.ai
+* [Fahd Husain](https://www.linkedin.com/in/fahdhusain/), mozilla.ai
 
 ## Sponsors
 
