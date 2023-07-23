@@ -49,11 +49,11 @@ We picked LFM as it suits the spirit and the goal of this event: in particular, 
 
 Importantly, the dataset of this workshop is a _new_, augmented version of the one used [last year at CIKM](https://github.com/RecList/evalRS-CIKM-2022): to provide richer [item meta-data](https://arxiv.org/abs/1912.02477), we extended the LFM-1b dataset with content-based features and user-provided labels from the [WASABI dataset](https://github.com/micbuffa/WasabiDataset) (see below).
 
-### Dataset overview
+### Data overview
 
 When you run the evaluation loop below, the code will automatically download _a chosen subset of the LFM dataset_, ready to be used (the code will download it only the first time you run it). There are three main objects available from the provided evaluation class:
 
-_Users_: a collection of users and available meta-data, including patterns of consumption, demographics etc... In the Data Challenge scenario, the user Id is the query item for the model, which is asked to recommend songs to the user.
+_Users_: a collection of users and available meta-data, including patterns of consumption, demographics etc. In the Data Challenge scenario, the user Id is the query item for the model, which is asked to recommend songs to the user.
 
 ![http://www.cp.jku.at/datasets/LFM-1b/](images/users.png)
 
@@ -61,11 +61,10 @@ _Tracks_: a collection of tracks and available meta-data. In the Data Challenge 
 
 ![http://www.cp.jku.at/datasets/LFM-1b/](images/tracks.png)
 
-[//]: # (TODO: add one more picture on the extra fields and their coverage)
-
 _Historical Interactions_: a collection of interactions between users and tracks, that is, listening events, which should be used by your model to build the recommender system for the Data Challenge.
 
 ![http://www.cp.jku.at/datasets/LFM-1b/](images/training.png)
+
 
 To enrich track-related metadata, four addditional objects are provided holding features derived from the WASABI dataset:
 
@@ -74,7 +73,7 @@ _Social and Emotion Tags_: a collection of social tags and emotion tags collecte
 ![https://github.com/micbuffa/WasabiDataset/](images/tags.png)
 
 
-_Topics_: a collection of 60-dimensional descriptors representing the topic distribution of a LDA topic model trained on English lyrics (model is available [here](https://github.com/micbuffa/WasabiDataset/)).
+_Topics_: a collection of 60-dimensional sparse descriptors representing the topic distribution of a LDA topic model trained on English lyrics (model is available [here](https://github.com/micbuffa/WasabiDataset/)).
 
 
 ![https://github.com/micbuffa/WasabiDataset/](images/topics.png)
@@ -85,20 +84,86 @@ _Song Embeddings_: 768-dimensional SentenceBERT embeddings calculated, using the
 ![https://sbert.net/docs/pretrained_models.html](images/embeddings.png)
 
 
+**NOTE** that verse embeddings are quite **large** (~35GB) so they are stored as multiple parquet files, split by initial letter of band name (see an example on how to load the embeddings [here](notebooks/eda-on-the-evalrs-dataset.ipynb)). 
 
-For in-depth explanations of the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`.
+If you want to use them in your model, you can download them manually from the following links:
+[
+[3](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_3.parquet)
+[5](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_5.parquet)
+[A](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_A.parquet)
+[B](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_B.parquet)
+[C](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_C.parquet)
+[D](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_D.parquet)
+[E](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_E.parquet)
+[F](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_F.parquet)
+[G](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_G.parquet)
+[H](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_H.parquet)
+[I](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_I.parquet)
+[J](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_J.parquet)
+[K](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_K.parquet)
+[L](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_L.parquet)
+[M](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_M.parquet)
+[N](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_N.parquet)
+[O](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_O.parquet)
+[P](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_P.parquet)
+[Q](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_Q.parquet)
+[R](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_R.parquet)
+[S](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_S.parquet)
+[T](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_T.parquet)
+[U](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_U.parquet)
+[V](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_V.parquet)
+[W](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_W.parquet)
+[X](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_X.parquet)
+[Y](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_Y.parquet)
+[Z](https://evalrs.object.lga1.coreweave.com/evalrs_verse_embeddings_Z.parquet)
+].
+
+For in-depth explanations on the code and the template scripts, see the instructions below and check the provided examples and tutorials in `notebooks`. For instance, the EDA notebook showcases some important features of the dataset, and provides a start for exploring the problem - e.g. the picture below shows music consumption by hour of day:
+
+![Chart for EDA](images/chart.png)
 
 For information on how the original datasets were built and what meta-data are available, please refer to these papers: [LFM-1b](http://www.cp.jku.at/people/schedl/Research/Publications/pdf/schedl_ijmir_2017.pdf), [WASABI](https://dl.acm.org/doi/10.1007/s10579-022-09601-8).
 
 
 ## Hack with us
 
-You can refer to our collab notebooks to start playing with the dataset and to run a first, very simple model, with RecList.
+You can refer to our colab notebooks to start playing with the dataset and to run a first, very simple model, with RecList.
 
 | Name            | Link     | 
 |-----------------|----------|
 | Tutorial 1 - Exploring the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VXmCpL0YkLkf5_GTgJmLtd2b2A57CNjm?usp=sharing)|
 | Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
+| Tutorial 3 - A Song Embedding Model on the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hZJj5akr1cMP3QWWKXvD0MNoX4GimNb7?usp=sharing)|
+| Appendix - How to Write a RecList | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1GVsVB1a3H9qbRQvwtb0TBDxq8A5nXc5w?usp=sharing)|
+
+
+
+### 1. Get the dataset and do a dry run
+
+Download the repo and setup a virtual environment. _NOTE_: the code has been developed and tested with Python 3.9: please use the same version for reproducibility.
+
+```bash
+git clone https://github.com/RecList/evalRS-CIKM-2022
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+To run a quick evaluation loop with _random predictions_ (no real model!) to familiarize yourself with the evaluation loop, the existing tests and the expected terminal output, you can use the `example_model` notebook or [this](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing) colab tutorial.
+
+
+### 2. Run evaluation on pretrained models
+
+[//]: # (TODO: add a code example in which we re-use an NVIDIA model and run the same eval as above)
+
+### 3. Expand RecList with your own tests
+
+[//]: # (TODO: add a code example in which we add one test to reclist)
+
+### BONUS: bring your own model, or train one from scratch
+
+[//]: # (TODO: notebook / script showing how to use an existing model, or train a new one )
+
 
 ## Hackathon Structure and Rules
 
@@ -119,14 +184,13 @@ Examples could be operationalizing important notions of robustness, applying and
 
 ### Prizes
 
-Here is the breakdown of the prizes that will be awarded:
+Thanks to our generous sponsors, the following prizes will be awarded (at the sole discretion of the committee):
 
-* $500 best student paper
-* $500 best paper
-* $500 runner-up best hackathon project
-* $2000 best hackathon project
+* a winner prize, 2000 USD, for the best hackathon project;
+* a runner-up prize, 5000 USD, for the second best hackathon project;
+* a best paper award prize of 500 USD
+* a best student paper award prize of 500 USD
 
-The prizes are generously offered by _mozilla.ai_: winners should contact `fahd at mozilla dot ai` for the delivery.
 
 ## Organizers 
 
@@ -143,28 +207,41 @@ This event focuses on building in the open, and adding lasting artifacts to the 
 
 ## Sponsors
 
-This Data Challenge is open and possible thanks to the generous support of these awesome folks. Make sure to add a star to [our library](https://github.com/jacopotagliabue/reclist) and check them out!
+This Hackathon and the related social event are possible thanks to the generous support of these awesome folks. Make sure to add a star to [our library](https://github.com/jacopotagliabue/reclist) and check them out!
 
 
 <a href="https://mozilla.ai/" target="_blank">
-    <img src="images/mozai.svg" width="200"/>
+    <img src="images/mozai.svg" width="100"/>
 </a>
 
 <a href="https://snap.com/en-US" target="_blank">
-    <img src="images/snap.png" width="200"/>
+    <img src="images/snap.png" width="100"/>
 </a>
 
 <a href="https://www.bauplanlabs.com/" target="_blank">
-    <img src="images/bauplan.png" width="200"/>
+    <img src="images/bauplan.png" width="100"/>
 </a>
 
 <a href="https://costanoa.vc/" target="_blank">
-    <img src="https://costanoa.vc/wp-content/themes/costanoa/img/logo-wide-dark2@2x.svg" width="200"/>
+    <img src="images/costanoa.svg" width="200"/>
 </a>
+
+
+## Accepted Papers
+
+[//]: # (TODO: add code links if available )
+
+Authors | Title | Paper | Repo |
+--- | --- | --- | ---
+Noble et Al | Realistic but Non-Identifiable Synthetic User Data Generation | [paper](/final_papers/EVALRS2023_paper_1.pdf) | [code]()
+Malitesta et Al | Disentangling the Performance Puzzle of Multimodal-aware Recommender Systems | [paper](/final_papers/EVALRS2023_paper_2.pdf) | [code]()
+Kasalický et Al | Bridging Offline-Online Evaluation with a Time-dependent and Popularity Bias-free Offline Metric for Recommenders | [paper](/final_papers/EVALRS2023_paper_3.pdf) | [code]()
+Selman et Al | Evaluating Recommendation Systems Using the Power of Embeddings | [paper](/final_papers/EVALRS2023_paper_4.pdf) | [code]()
+Singh et Al | Metric@CustomerN: Evaluating Metrics at a Customer Level in E-Commerce | [paper](/final_papers/EVALRS2023_paper_5.pdf) | [code]()
 
 ## How to Cite
 
-If you find our code, datasets, tests useful in your work, please cite the original WebConf contribution as well as the EvalRS paper.
+If you find the materials from the workshop useful in your work, please cite the original WebConf contribution and the workshop paper.
 
 _RecList_
 
@@ -199,3 +276,4 @@ _EvalRS_
   copyright = {Creative Commons Attribution 4.0 International}
 }
 ```
+
