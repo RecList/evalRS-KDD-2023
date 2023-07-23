@@ -164,9 +164,9 @@ class EvalRSReclist(RecList):
 
         hits = hits_at_k(self._y_preds, self._y_test, k=TOP_K_CHALLENGE).max(axis=2)
         misses = (hits == False)
-        miss_gt_vectors = self._dense_repr[self._y_test.loc[misses, 'track_id'].values.reshape(-1)]
+        miss_gt_vectors = self.similarity_model[self._y_test.loc[misses, 'track_id'].values.reshape(-1)]
         # we calculate the score w.r.t to the first prediction
-        miss_pred_vectors = self._dense_repr[self._y_preds.loc[misses, '0'].values.reshape(-1)]
+        miss_pred_vectors = self.similarity_model[self._y_preds.loc[misses, '0'].values.reshape(-1)]
 
         return float(self.cosine_sim(miss_gt_vectors, miss_pred_vectors).mean())
     
