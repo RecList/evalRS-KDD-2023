@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import os
 from reclist.reclist import rec_test
-from reclist.reclist import RecList
+from reclist.reclist import RecList, CHART_TYPE
 from random import choice
 
 TOP_K_CHALLENGE = 100
@@ -104,7 +104,7 @@ class EvalRSReclist(RecList):
         from reclist.metrics.standard_metrics import mrr_at_k
         return mrr_at_k(self._y_preds, self._y_test, k=TOP_K_CHALLENGE)
 
-    @rec_test('MRED_COUNTRY')
+    @rec_test('MRED_COUNTRY', display_type=CHART_TYPE.BARS)
     def mred_country(self):
         country_list = ["US", "RU", "DE", "UK", "PL", "BR", "FI", "NL", "ES", "SE", "UA", "CA", "FR", "NaN"]
         user_countries = self.dataset.df_users.loc[self._y_test.index, ['country']].fillna('NaN')
@@ -115,7 +115,7 @@ class EvalRSReclist(RecList):
 
         return self.miss_rate_equality_difference(y_pred_valid, y_test_valid, user_countries, 'country')
 
-    @rec_test('MRED_USER_ACTIVITY')
+    @rec_test('MRED_USER_ACTIVITY', display_type=CHART_TYPE.BARS)
     def mred_user_activity(self):
         bins = np.array([1, 100, 1000])
         user_activity = self._x_train[self._x_train['user_id'].isin(self._y_test.index)]
@@ -127,7 +127,7 @@ class EvalRSReclist(RecList):
 
         return self.miss_rate_equality_difference(self._y_preds, self._y_test, user_activity, 'bins')
 
-    @rec_test('MRED_TRACK_POPULARITY')
+    @rec_test('MRED_TRACK_POPULARITY', display_type=CHART_TYPE.BARS)
     def mred_track_popularity(self):
         bins = np.array([1, 10, 100, 1000])
         track_id = self._y_test['track_id']
@@ -140,7 +140,7 @@ class EvalRSReclist(RecList):
 
         return self.miss_rate_equality_difference(self._y_preds, self._y_test, track_activity, 'bins')
 
-    @rec_test('MRED_ARTIST_POPULARITY')
+    @rec_test('MRED_ARTIST_POPULARITY', display_type=CHART_TYPE.BARS)
     def mred_artist_popularity(self):
         bins = np.array([1, 100, 1000, 10000])
         artist_id = self.dataset.df_tracks.loc[self._y_test['track_id'], 'artist_id']
@@ -153,48 +153,23 @@ class EvalRSReclist(RecList):
 
         return self.miss_rate_equality_difference(self._y_preds, self._y_test, artist_activity, 'bins')
 
-    @rec_test('MRED_GENDER')
+    @rec_test('MRED_GENDER', display_type=CHART_TYPE.BARS)
     def mred_gender(self):
         user_gender = self.dataset.df_users.loc[self._y_test.index, ['gender']]
         return self.miss_rate_equality_difference(self._y_preds, self._y_test, user_gender, 'gender')
 
-    # @rec_test('BEING_LESS_WRONG')
-    # def being_less_wrong(self):
-    #     from reclist.metrics.standard_metrics import hits_at_k
+    @rec_test('BEING_LESS_WRONG')
+    def being_less_wrong(self):
+        from reclist.metrics.standard_metrics import hits_at_k
 
-    #     hits = hits_at_k(self._y_preds, self._y_test, k=TOP_K_CHALLENGE).max(axis=2)
-    #     misses = (hits == False)
-    #     miss_gt_vectors = self._dense_repr[self._y_test.loc[misses, 'track_id'].values.reshape(-1)]
-    #     # we calculate the score w.r.t to the first prediction
-    #     miss_pred_vectors = self._dense_repr[self._y_preds.loc[misses, '0'].values.reshape(-1)]
+        hits = hits_at_k(self._y_preds, self._y_test, k=TOP_K_CHALLENGE).max(axis=2)
+        misses = (hits == False)
+        miss_gt_vectors = self.similarity_model[self._y_test.loc[misses, 'track_id'].values.reshape(-1)]
+        # we calculate the score w.r.t to the first prediction
+        miss_pred_vectors = self.similarity_model[self._y_preds.loc[misses, '0'].values.reshape(-1)]
 
-    #     return float(self.cosine_sim(miss_gt_vectors, miss_pred_vectors).mean())
-
-    # @rec_test('LATENT_DIVERSITY')
-    # def latent_diversity(self):
-    #     # make copy of pred
-    #     preds = self._y_preds.copy()
-    #     num_inputs = preds.shape[0]
-    #     # there maybe be < K predictions
-    #     pred_vector_mask = self._y_preds.isin(list(self._dense_repr.key_to_index.keys())).values            # N x K
-    #     # fill missing/invalid pred with dummy variable
-    #     dummy_key = next(iter(self._dense_repr.key_to_index))
-    #     preds = preds.where(pred_vector_mask, other=dummy_key)
-    #     # grab vectors
-    #     pred_vectors = self._dense_repr[preds.values[:,:20].reshape(-1)].reshape(num_inputs, 20, -1)        # N x K x D
-    #     # mask vectors
-    #     pred_vectors = pred_vectors * pred_vector_mask[:, :20, None]                                        # N x K x D
-    #     # compute mean pred vector
-    #     mean_pred_vector = np.sum(pred_vectors, axis=1) / pred_vector_mask.sum(axis=1, keepdims=True)       # N x D
-    #     # computre distances to mean vector and average
-    #     distance_to_mean = 1-self.cosine_sim(mean_pred_vector[:, None, :], pred_vectors)                    # N x K
-    #     mean_distance = np.sum(distance_to_mean * pred_vector_mask[:,:20], axis=1) / pred_vector_mask[:,:20].sum(axis=1)
-    #     # compute bias distance
-    #     gt_vectors = self._dense_repr[self._y_test['track_id'].values.reshape(-1)]
-    #     bias_distance = 1-self.cosine_sim(mean_pred_vector, gt_vectors)
-    #     # weight diversity and correctness importance
-    #     return float((0.3*mean_distance-0.7*bias_distance).mean())
-
+        return float(self.cosine_sim(miss_gt_vectors, miss_pred_vectors).mean())
+    
 
 class EvalRSSimpleModel:
     """
