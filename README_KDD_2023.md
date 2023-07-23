@@ -189,15 +189,20 @@ To run a quick evaluation loop with _random predictions_ (no real model!) to fam
 
 ### How the Hackathon runs
 
-- can people work on it before the event? 
-- What do we expect as a final submission (a repo? A video? A demo? Slides?) 
+We will ask participants to come up with a contribution for the rounded evaluation of recommender systems, based on the dataset and tools available in this repository. Contribution details will be intentionally left open-ended, as we would like participants to engage different angles of the problem on a shared set of resources. 
 
+Examples could be operationalizing important notions of robustness, applying and discussing metric definitions from literature, quantifying the trade-off between privacy and accuracy, and so on. The hackathon is a unique opportunity to **live and breathe** the workshop themes, increase chances of multi-disciplinary collaboration, network and discover related work by peers, and contribute valuable materials back to the community. 
 
-### Rules and Prizes
+### Rules
 
-_The rules_
+* The hackathon will start during the workshop and continue at the social gathering.
+* Remote teams that are not able to join KDD in person can participate to the hackathon if willing to operate during the workshop hours: please send a message to `claudio dot pomo at poliba dot it` and `fede at stanford dot edu` if you're interested in partecipating remotely.
+* Teams can start working on their project before KDD, provided they will also work during the event and engage the other participants during the workshop.
+* The only dataset that can be used is the one provided with this repository (you can, of course, _augment_ it if you see fit): given the open-ended nature of the challenge, we are happy for participants to choose whatever tool they desire: for example, you can bring your own model or use the ones we provide if the point you are making is independent from any modelling choice. Please note that if you focus on offline code-based evaluation, re-using and extending the provided RecList provides bonus points, as our goal is to progressively standardize testing through a common library.
+* The deliverables for each team are two: 1) a public GitHub repository with an open source license containing whatever has been used for the project (e.g. code, materials, slides, charts); 2) a elevator pitch (video duration needs to be less than 3 minutes) to explain (using any narrative device: e.g. a demo, a demo and some slides, animations) the project: motivation, execution, learnings and why it is cool.
+* Based on the materials submitted and the elevator pitch, the organizers will determine the winners at their sole discretion and award the prizes at the social event the evening of Aug. 7th (location TBD).
 
-_The prizes_
+### Prizes
 
 Thanks to our generous sponsors, the following prizes will be awarded (at the sole discretion of the committee):
 
@@ -206,10 +211,6 @@ Thanks to our generous sponsors, the following prizes will be awarded (at the so
 * a best paper award prize of 500 USD
 * a best student paper award prize of 500 USD
 
-
-## FAQ
-
-* any questions we might expect
 
 ## Organizers 
 
