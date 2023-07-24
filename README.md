@@ -187,7 +187,7 @@ Examples could be operationalizing important notions of robustness, applying and
 ### Rules
 
 * The hackathon will start during the workshop and continue at the social gathering.
-* You do not need a paper in the workshop to partecipate: if you are in person, you need to register to the KDD workshop, if you're remote (see below) reach out to us directly.
+* You do *not* need a paper in the workshop to partecipate: if you are in person, you need to register to the KDD workshop, if you're remote (see below) reach out to us directly.
 * Remote teams that are not able to join KDD in person can participate to the hackathon if willing to operate during the workshop hours: please send a message to `claudio dot pomo at poliba dot it` and `fede at stanford dot edu` if you're interested in partecipating remotely.
 * Teams can start working on their project before KDD, provided they will also work during the event and engage the other participants during the workshop.
 * The only dataset that can be used is the one provided with this repository (you can, of course, _augment_ it if you see fit): given the open-ended nature of the challenge, we are happy for participants to choose whatever tool they desire: for example, you can bring your own model or use the ones we provide if the point you are making is independent from any modelling choice. Please note that if you focus on offline code-based evaluation, re-using and extending the provided RecList provides bonus points, as our goal is to progressively standardize testing through a common library.
@@ -200,7 +200,8 @@ We invite participants to come up with interesting and original projects related
 
 * Did you publish a paper on RecSys evaluation or did you like [one accepted to EvalRS](https://github.com/RecList/evalRS-KDD-2023/tree/main/papers)? Can you extend the official [RecList](https://github.com/RecList/evalRS-KDD-2023/blob/main/evaluation/EvalRSReclist.py) to include the new methods and draw new insights about our dataset?
 * Did you recently train a new RecSys model and want to compare the new architecture vs an industry standard Merlin model using RecList?
-* Are you interested in data visualization / dataset exploration? Can you find where in the user (item) space the Merlin model tend to underperform?
+* Are you interested in data visualization / dataset exploration? Can you find where in the user (item) space the Merlin model we provide tend to underperform?
+* How much latent space metrics, such as ["being less wrong"](https://arxiv.org/abs/2111.09963), change when the underlying space is built through song2vec vs for example content-embeddings through lyrics?
  
 _TBC_
 
