@@ -194,6 +194,16 @@ Examples could be operationalizing important notions of robustness, applying and
 * The deliverables for each team are two: 1) a public GitHub repository with an open source license containing whatever has been used for the project (e.g. code, materials, slides, charts); 2) a elevator pitch (video duration needs to be less than 3 minutes) to explain (using any narrative device: e.g. a demo, a demo and some slides, animations) the project: motivation, execution, learnings and why it is cool.
 * Based on the materials submitted and the elevator pitch, the organizers will determine the winners at their sole discretion and award the prizes at the social event the evening of Aug. 7th (location TBD).
 
+### Inspiration
+
+We invite participants to come up with interesting and original projects related to the well-rounded evaluation of recommender systems. As suggestions and inspirations, we list few themes / possibilities to get teams started:
+
+* Did you publish a paper on RecSys evaluation or did you like [one accepted to EvalRS](https://github.com/RecList/evalRS-KDD-2023/tree/main/papers)? Can you extend the official [RecList](https://github.com/RecList/evalRS-KDD-2023/blob/main/evaluation/EvalRSReclist.py) to include the new methods and draw new insights about our dataset?
+* Did you recently train a new RecSys model and want to compare the new architecture vs an industry standard Merlin model using RecList?
+* Are you interested in data visualization / dataset exploration? Can you find where in the user (item) space the Merlin model tend to underperform?
+ 
+_TBC_
+
 ### Prizes
 
 Thanks to our generous sponsors, the following prizes will be awarded (at the sole discretion of the committee):
