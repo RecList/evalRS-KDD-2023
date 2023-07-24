@@ -84,7 +84,7 @@ class EvalRSReclist(RecList):
     def cosine_sim(self, u: np.array, v: np.array) -> np.array:
         return np.sum(u * v, axis=-1) / (np.linalg.norm(u, axis=-1) * np.linalg.norm(v, axis=-1))
 
-    @rec_test('stats')
+    @rec_test(test_type='stats')
     def stats(self):
         tracks_per_users = (self._y_test.values!=-1).sum(axis=1)
         return {
@@ -93,18 +93,18 @@ class EvalRSReclist(RecList):
             'min_items': int(tracks_per_users.min())
         }
 
-    @rec_test('HIT_RATE')
+    @rec_test(test_type='HIT_RATE')
     def hit_rate_at_100(self):
         from reclist.metrics.standard_metrics import hit_rate_at_k
         hr = hit_rate_at_k(self._y_preds, self._y_test, k=TOP_K_CHALLENGE)
         return hr
 
-    @rec_test('MRR')
+    @rec_test(test_type='MRR')
     def mrr_at_100(self):
         from reclist.metrics.standard_metrics import mrr_at_k
         return mrr_at_k(self._y_preds, self._y_test, k=TOP_K_CHALLENGE)
 
-    @rec_test('MRED_COUNTRY', display_type=CHART_TYPE.BARS)
+    @rec_test(test_type='MRED_COUNTRY', display_type=CHART_TYPE.BARS)
     def mred_country(self):
         country_list = ["US", "RU", "DE", "UK", "PL", "BR", "FI", "NL", "ES", "SE", "UA", "CA", "FR", "NaN"]
         user_countries = self.dataset.df_users.loc[self._y_test.index, ['country']].fillna('NaN')
@@ -115,7 +115,7 @@ class EvalRSReclist(RecList):
 
         return self.miss_rate_equality_difference(y_pred_valid, y_test_valid, user_countries, 'country')
 
-    @rec_test('MRED_USER_ACTIVITY', display_type=CHART_TYPE.BARS)
+    @rec_test(test_type='MRED_USER_ACTIVITY', display_type=CHART_TYPE.BARS)
     def mred_user_activity(self):
         bins = np.array([1, 100, 1000])
         user_activity = self._x_train[self._x_train['user_id'].isin(self._y_test.index)]
@@ -127,7 +127,7 @@ class EvalRSReclist(RecList):
 
         return self.miss_rate_equality_difference(self._y_preds, self._y_test, user_activity, 'bins')
 
-    @rec_test('MRED_TRACK_POPULARITY', display_type=CHART_TYPE.BARS)
+    @rec_test(test_type='MRED_TRACK_POPULARITY', display_type=CHART_TYPE.BARS)
     def mred_track_popularity(self):
         bins = np.array([1, 10, 100, 1000])
         track_id = self._y_test['track_id']
@@ -140,7 +140,7 @@ class EvalRSReclist(RecList):
 
         return self.miss_rate_equality_difference(self._y_preds, self._y_test, track_activity, 'bins')
 
-    @rec_test('MRED_ARTIST_POPULARITY', display_type=CHART_TYPE.BARS)
+    @rec_test(test_type='MRED_ARTIST_POPULARITY', display_type=CHART_TYPE.BARS)
     def mred_artist_popularity(self):
         bins = np.array([1, 100, 1000, 10000])
         artist_id = self.dataset.df_tracks.loc[self._y_test['track_id'], 'artist_id']
@@ -158,7 +158,7 @@ class EvalRSReclist(RecList):
         user_gender = self.dataset.df_users.loc[self._y_test.index, ['gender']]
         return self.miss_rate_equality_difference(self._y_preds, self._y_test, user_gender, 'gender')
 
-    @rec_test('BEING_LESS_WRONG')
+    @rec_test(test_type='BEING_LESS_WRONG')
     def being_less_wrong(self):
         from reclist.metrics.standard_metrics import hits_at_k
 

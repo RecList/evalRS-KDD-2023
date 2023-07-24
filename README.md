@@ -28,8 +28,6 @@ Aside from papers and talks, we will host a hackathon, where participants will p
 
 This repository provides an open dataset and all the tools necessary to partecipate in the hackathon: everything will go back to the community as open-source contributions. Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
 
-All accepted papers for EvalRS are available [here](https://github.com/RecList/evalRS-KDD-2023/tree/main/papers).
-
 ### Important dates
 
 Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official timeline, including the start date, paper submission, and workshop schedule.
@@ -127,7 +125,9 @@ For information on how the original datasets were built and what meta-data are a
 
 ## Hack with us
 
-You can refer to our colab notebooks to start playing with the dataset and to run a first, very simple model, with RecList.
+### 1. Explore the dataset and code online
+
+You can refer to our colab notebooks to start playing with the dataset and understand how to run a first, very simple model, with RecList.
 
 | Name            | Link     | 
 |-----------------|----------|
@@ -137,8 +137,7 @@ You can refer to our colab notebooks to start playing with the dataset and to ru
 | Appendix - How to Write a RecList | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1GVsVB1a3H9qbRQvwtb0TBDxq8A5nXc5w?usp=sharing)|
 
 
-
-### 1. Get the dataset and do a dry run
+### 2. Get your local setup working
 
 Download the repo and setup a virtual environment. _NOTE_: the code has been developed and tested with Python 3.9: please use the same version for reproducibility.
 
@@ -149,21 +148,33 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-To run a quick evaluation loop with _random predictions_ (no real model!) to familiarize yourself with the evaluation loop, the existing tests and the expected terminal output, you can use the `example_model` notebook or [this](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing) colab tutorial.
+Now you can run the provided sample script for testing the evaluation loop with _random predictions_ (tote that that you can use the `example_model` notebook if you prefer a notebook interface):
 
+```bash
+cd evaluation
+python eval.py
+```
 
-### 2. Run evaluation on pretrained models
+Now that the loop is setup correctly, time to test a real model!
+
+#### Bonus: using a third-party experimental tracking tool
+
+If you wish to use [Comet](https://www.comet.com/) or [Neptune](https://app.neptune.ai/) to automatically track the results of running recList, you can do so by passing an additional parameter (`comet` or `neptune`) to our sample script:
+
+```bash 
+python eval.py comet
+python eval.py neptune
+```
+
+At loading time, the script will load env variables in a local `.env` files and use them automatically to configure remote logging. You can create your own `.env` files starting from the provided `local.env` template, and filling it with your secrets.
+
+Please make sure the relevant Python packages from your tracking provider are installed in the environment.
+
+### 3. Run evaluation on a real-world model
 
 [//]: # (TODO: add a code example in which we re-use an NVIDIA model and run the same eval as above)
 
-### 3. Expand RecList with your own tests
-
-[//]: # (TODO: add a code example in which we add one test to reclist)
-
-### BONUS: bring your own model, or train one from scratch
-
-[//]: # (TODO: notebook / script showing how to use an existing model, or train a new one )
-
+_TBC_
 
 ## Hackathon Structure and Rules
 
@@ -176,6 +187,7 @@ Examples could be operationalizing important notions of robustness, applying and
 ### Rules
 
 * The hackathon will start during the workshop and continue at the social gathering.
+* You do not need a paper in the workshop to partecipate: if you are in person, you need to register to the KDD workshop, if you're remote (see below) reach out to us directly.
 * Remote teams that are not able to join KDD in person can participate to the hackathon if willing to operate during the workshop hours: please send a message to `claudio dot pomo at poliba dot it` and `fede at stanford dot edu` if you're interested in partecipating remotely.
 * Teams can start working on their project before KDD, provided they will also work during the event and engage the other participants during the workshop.
 * The only dataset that can be used is the one provided with this repository (you can, of course, _augment_ it if you see fit): given the open-ended nature of the challenge, we are happy for participants to choose whatever tool they desire: for example, you can bring your own model or use the ones we provide if the point you are making is independent from any modelling choice. Please note that if you focus on offline code-based evaluation, re-using and extending the provided RecList provides bonus points, as our goal is to progressively standardize testing through a common library.
@@ -187,10 +199,9 @@ Examples could be operationalizing important notions of robustness, applying and
 Thanks to our generous sponsors, the following prizes will be awarded (at the sole discretion of the committee):
 
 * a winner prize, 2000 USD, for the best hackathon project;
-* a runner-up prize, 5000 USD, for the second best hackathon project;
-* a best paper award prize of 500 USD
-* a best student paper award prize of 500 USD
-
+* a runner-up prize, 500 USD, for the second best hackathon project;
+* a best paper award prize of 500 USD;
+* a best student paper award prize of 500 USD.
 
 ## Organizers 
 
@@ -228,8 +239,6 @@ This Hackathon and the related social event are possible thanks to the generous 
 
 
 ## Accepted Papers
-
-[//]: # (TODO: add code links if available )
 
 Authors | Title | Paper | Repo |
 --- | --- | --- | ---

@@ -3,3 +3,5 @@ appdirs==1.4.4
 tqdm==4.65
 requests==2.31.0
 pyarrow==12.0.1
+python-dotenv==1.0.0
+git+https://github.com/RecList/reclist@main#egg=reclist
