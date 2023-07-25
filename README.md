@@ -17,6 +17,7 @@ _The repository is mostly stable (i.e. you can start hacking!), but check back o
 | Tutorial 1 - Exploring the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VXmCpL0YkLkf5_GTgJmLtd2b2A57CNjm?usp=sharing)|
 | Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
 | Tutorial 3 - A Song Embedding Model on the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hZJj5akr1cMP3QWWKXvD0MNoX4GimNb7?usp=sharing)|
+| Tutorial 4 - A tutorial on building Retrieval Models (MF, Two-Tower) using Merlin| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Ftl2B7BVFMfFjyjWweFCP_gA_LdCl7-a?usp=sharing)|
 | Appendix - How to Write a RecList | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1GVsVB1a3H9qbRQvwtb0TBDxq8A5nXc5w?usp=sharing)|
 
 
