@@ -1,11 +1,14 @@
 # Tutorial for the EvalRS 2023 - RecSys evaluation hackaton
 
-## Retrieval models with Merlin and Tensorflow on LastFM dataset
+## Retrieval models with Merlin and Tensorflow on LastFM/EvalRS dataset
 
+This tutorial demonstrates how you can build and train retrieval models with [Merlin framework](https://github.com/NVIDIA-Merlin/) and Tensorflow. It builds, trains and evaluates two retrieval models: **Matrix Factorization** and **Two-Tower architecture**.  
 
-In this folder we provide a baseline recommender algorithms using the [Merlin framework](https://github.com/NVIDIA-Merlin/) and Tensorlfow.
-It builds, trains and evaluates two retrieval models: **Matrix Factorization** and **Two-Tower architecture**.  
+You can run it on Colab!  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Ftl2B7BVFMfFjyjWweFCP_gA_LdCl7-a?usp=sharing)
 
+## Running the tutorial in your environment
+
+If you have an environment with Linux, GPU (with at least 16 GB memory) and Docker, you can run this tutorial in your environment using the full EvalRS dataset.
 You have two options for getting results for evaluation:
 - (A) To build, train (and improve) the model
 - (B) Take the baseline predictions from model (A) and focus on the evaluation / model analysis
