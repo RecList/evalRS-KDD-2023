@@ -38,7 +38,7 @@ if __name__ == '__main__':
     # get some predictions
     df_predictions = my_df_model.predict(dataset._get_test_set(fold=0)[['user_id']])
 
-    # load a similarity model: here we used 
+    # load a similarity model: here we use a skip-gram based model we pre-trained
     similarity_model = KeyedVectors.load(os.path.join(dataset.path_to_dataset, 'song2vec.wv'))
     
     # initialize with everything
