@@ -227,6 +227,7 @@ This event focuses on building in the open, and adding lasting artifacts to the 
 * [Ciro Greco](https://www.linkedin.com/in/cirogreco/), Bauplan
 * [Davide Eynard](https://www.linkedin.com/in/deynard/), mozilla.ai
 * [Fahd Husain](https://www.linkedin.com/in/fahdhusain/), mozilla.ai
+* [Aaron Gonzales](https://www.linkedin.com/in/aaronknowsdata/), mozilla.ai
 
 ## Sponsors
 
