@@ -106,4 +106,4 @@ PyMDE is not included in the original list of requirements.txt for RepSys, becau
 Folder *repsys-evalrs* wasn't properly mounted to docker container and RepSys framework cannot find `/app/repsys.ini` file.
 
 ### I want to modify core of RepSys to make it faster or implement new features
-Feel free to follow [the instructions](https://github.com/cowjen01/repsys#the-team) how to run RepSys locally (without docker) or contact [our Team](https://github.com/cowjen01/repsys#the-team).
+Feel free to follow [the instructions](https://github.com/cowjen01/repsys#contributing) how to run RepSys locally (without docker) or contact [our Team](https://github.com/cowjen01/repsys#the-team).
