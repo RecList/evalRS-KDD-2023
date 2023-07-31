@@ -35,7 +35,7 @@ cd reclist && pip install -e .
 
 ```bash
 cd /models
-git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" && git fetch origin evalRS_2023 && git checkout evalRS_2023
+git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" && git fetch origin evalrs_2023 && git checkout evalrs_2023
 pip install . --no-deps
 ```
 
