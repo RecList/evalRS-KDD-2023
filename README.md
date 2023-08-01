@@ -3,7 +3,6 @@ Official Repository for EvalRS @ KDD 2023, the Second Edition of the workshop on
 
 <a href="https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing">  <img src="https://colab.research.google.com/assets/colab-badge.svg"> </a>
 
-[//]: # (TODO: we really need a new image!)
 ![https://reclist.io/kdd2023-cup/](images/back_evalrs.png)
 
 ## Status
@@ -203,8 +202,7 @@ We invite participants to come up with interesting and original projects related
 * Did you recently train a new RecSys model and want to compare the new architecture vs an industry standard Merlin model using RecList?
 * Are you interested in data visualization / dataset exploration? Can you find where in the user (item) space the Merlin model we provide tend to underperform?
 * How much latent space metrics, such as ["being less wrong"](https://arxiv.org/abs/2111.09963), change when the underlying space is built through song2vec vs for example content-embeddings through lyrics?
- 
-_TBC_
+
 
 ### Prizes
 
