@@ -7,7 +7,7 @@ Official Repository for EvalRS @ KDD 2023, the Second Edition of the workshop on
 
 ## Status
 
-_The repository is mostly stable (i.e. you can start hacking!), but check back often for additional material and tools, and possibly minor modifications to the sample code!_
+_The repository is stable and ready to be used for the hackathon_ (pending minor changes, fixes etc.)
 
 ## Quick Start
 
@@ -24,7 +24,11 @@ _The repository is mostly stable (i.e. you can start hacking!), but check back o
 
 This is the official repository for [EvalRS @ KDD 2023](https://reclist.io/kdd2023-cup/): _a Well-Rounded Evaluation of Recommender Systems_.
 
-Aside from papers and talks, we will host a hackathon, where participants will pursue innovative projects for the rounded evaluation of recommender systems. The aim of the hackathon is to evaluate recommender systems across a set of important dimensions (accuracy being _one_ of them) through a principled and re-usable set of abstractions, as provided by [RecList](https://github.com/jacopotagliabue/reclist) 🚀. At the end of the workshop, organizers will sponsor a social event for teams to finalize their projects, mingle with like-minded practitioners and received the monetary prizes for best papers and projects: a link to the event will be added soon!
+Aside from papers and talks, we will host a hackathon, where participants will pursue innovative projects for the rounded evaluation of recommender systems. The aim of the hackathon is to evaluate recommender systems across a set of important dimensions (accuracy being _one_ of them) through a principled and re-usable set of abstractions, as provided by [RecList](https://github.com/jacopotagliabue/reclist) 🚀. 
+
+At the end of the workshop, we will sponsor a social event for teams to finalize their projects, mingle with like-minded practitioners and received the monetary prizes for best papers and projects.
+
+*You can pre-register for the hackathon + drinks event [here](https://lu.ma/jfuofoxl) (availability is limited)!*
 
 This repository provides an open dataset and all the tools necessary to partecipate in the hackathon: everything will go back to the community as open-source contributions. Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
 
@@ -202,7 +206,6 @@ We invite participants to come up with interesting and original projects related
 * Did you recently train a new RecSys model and want to compare the new architecture vs an industry standard Merlin model using RecList?
 * Are you interested in data visualization / dataset exploration? Can you find where in the user (item) space the Merlin model we provide tend to underperform?
 * How much latent space metrics, such as ["being less wrong"](https://arxiv.org/abs/2111.09963), change when the underlying space is built through song2vec vs for example content-embeddings through lyrics?
-
 
 ### Prizes
 
