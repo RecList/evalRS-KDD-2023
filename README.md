@@ -143,7 +143,7 @@ You can refer to our colab notebooks to start playing with the dataset and under
 Download the repo and setup a virtual environment. _NOTE_: the code has been developed and tested with Python 3.9: please use the same version for reproducibility.
 
 ```bash
-git clone https://github.com/RecList/evalRS-CIKM-2022
+git clone https://github.com/RecList/evalRS-KDD-2023
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -173,9 +173,9 @@ Please make sure the relevant Python packages from your tracking provider are in
 
 ### 3. Run evaluation on a real-world model
 
-[//]: # (TODO: add a code example in which we re-use an NVIDIA model and run the same eval as above)
+We also provide the saved predictions files from the baseline models trained on the EvalRS dataset with [Merlin tutorial](notebooks/merlin_tf_tutorial/).  
+You can use those prediction files to run the evaluation directly with RecList using this [notebook](notebooks/merlin_tf_tutorial/evalrs_kdd_2023_reclist_eval_on_saved_preds.ipynb).
 
-_TBC_
 
 ## Hackathon Structure and Rules
 
