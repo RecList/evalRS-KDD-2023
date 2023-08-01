@@ -33,7 +33,7 @@ At the end of the workshop, we will sponsor a social event for teams to finalize
 
 *You can pre-register for the hackathon + drinks event [here](https://lu.ma/jfuofoxl) (availability is limited)!*
 
-This repository provides an open dataset and all the tools necessary to partecipate in the hackathon: everything will go back to the community as open-source contributions. Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
+This repository provides an open dataset and all the tools necessary to participate in the hackathon: everything will go back to the community as open-source contributions. Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
 
 ### Important dates
 
@@ -194,8 +194,8 @@ Examples could be operationalizing important notions of robustness, applying and
 ### Rules
 
 * The hackathon will start during the workshop and continue at the social gathering.
-* You do *not* need a paper in the workshop to partecipate: if you are in person, you need to register to the KDD workshop, if you're remote (see below) reach out to us directly.
-* Remote teams that are not able to join KDD in person can participate to the hackathon if willing to operate during the workshop hours: please send a message to `claudio dot pomo at poliba dot it` and `fede at stanford dot edu` if you're interested in partecipating remotely.
+* You do *not* need a paper in the workshop to participate: if you are in person, you need to register to the KDD workshop, if you're remote (see below) reach out to us directly.
+* Remote teams that are not able to join KDD in person can participate to the hackathon if willing to operate during the workshop hours: please send a message to `claudio dot pomo at poliba dot it` and `fede at stanford dot edu` if you're interested in participating remotely.
 * Teams can start working on their project before KDD, provided they will also work during the event and engage the other participants during the workshop.
 * The only dataset that can be used is the one provided with this repository (you can, of course, _augment_ it if you see fit): given the open-ended nature of the challenge, we are happy for participants to choose whatever tool they desire: for example, you can bring your own model or use the ones we provide if the point you are making is independent from any modelling choice. Please note that if you focus on offline code-based evaluation, re-using and extending the provided RecList provides bonus points, as our goal is to progressively standardize testing through a common library.
 * The deliverables for each team are two: 1) a public GitHub repository with an open source license containing whatever has been used for the project (e.g. code, materials, slides, charts); 2) a elevator pitch (video duration needs to be less than 3 minutes) to explain (using any narrative device: e.g. a demo, a demo and some slides, animations) the project: motivation, execution, learnings and why it is cool.
