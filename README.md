@@ -19,6 +19,9 @@ _The repository is stable and ready to be used for the hackathon_ (pending minor
 | Tutorial 4 - A tutorial on building Retrieval Models (MF, Two-Tower) using Merlin| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Ftl2B7BVFMfFjyjWweFCP_gA_LdCl7-a?usp=sharing)|
 | Appendix - How to Write a RecList | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1GVsVB1a3H9qbRQvwtb0TBDxq8A5nXc5w?usp=sharing)|
 
+## After-party
+
+The social event (see below) after the workshop for networking, awards and fun times with the community has been announced: pre-register [here](https://lu.ma/jfuofoxl)!
 
 ## Overview
 
