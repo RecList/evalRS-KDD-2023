@@ -3,31 +3,37 @@ Official Repository for EvalRS @ KDD 2023, the Second Edition of the workshop on
 
 <a href="https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing">  <img src="https://colab.research.google.com/assets/colab-badge.svg"> </a>
 
-[//]: # (TODO: we really need a new image!)
 ![https://reclist.io/kdd2023-cup/](images/back_evalrs.png)
 
 ## Status
 
-_The repository is mostly stable (i.e. you can start hacking!), but check back often for additional material and tools, and possibly minor modifications to the sample code!_
+_The repository is stable and ready to be used for the hackathon_ (pending minor changes, fixes etc.)
 
 ## Quick Start
 
 | Name            | Link     | 
 |-----------------|----------|
 | Tutorial 1 - Exploring the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VXmCpL0YkLkf5_GTgJmLtd2b2A57CNjm?usp=sharing)|
-| Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
-| Tutorial 3 - A Song Embedding Model on the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hZJj5akr1cMP3QWWKXvD0MNoX4GimNb7?usp=sharing)|
+| Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Cz9k8dIqzZ8Eetpv4aiihmpjp3TivIz7?usp=sharing)|
+| Tutorial 3 - A Song Embedding Model on the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1rE0nuXiDRqSEtSiubkDp-F2vKssRsJgT?usp=sharing)|
 | Tutorial 4 - A tutorial on building Retrieval Models (MF, Two-Tower) using Merlin| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Ftl2B7BVFMfFjyjWweFCP_gA_LdCl7-a?usp=sharing)|
 | Appendix - How to Write a RecList | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1GVsVB1a3H9qbRQvwtb0TBDxq8A5nXc5w?usp=sharing)|
 
+## After-party
+
+The social event (see below) after the workshop for networking, awards and fun times with the community has been announced: pre-register [here](https://lu.ma/jfuofoxl)!
 
 ## Overview
 
 This is the official repository for [EvalRS @ KDD 2023](https://reclist.io/kdd2023-cup/): _a Well-Rounded Evaluation of Recommender Systems_.
 
-Aside from papers and talks, we will host a hackathon, where participants will pursue innovative projects for the rounded evaluation of recommender systems. The aim of the hackathon is to evaluate recommender systems across a set of important dimensions (accuracy being _one_ of them) through a principled and re-usable set of abstractions, as provided by [RecList](https://github.com/jacopotagliabue/reclist) 🚀. At the end of the workshop, organizers will sponsor a social event for teams to finalize their projects, mingle with like-minded practitioners and received the monetary prizes for best papers and projects: a link to the event will be added soon!
+Aside from papers and talks, we will host a hackathon, where participants will pursue innovative projects for the rounded evaluation of recommender systems. The aim of the hackathon is to evaluate recommender systems across a set of important dimensions (accuracy being _one_ of them) through a principled and re-usable set of abstractions, as provided by [RecList](https://github.com/jacopotagliabue/reclist) 🚀. 
 
-This repository provides an open dataset and all the tools necessary to partecipate in the hackathon: everything will go back to the community as open-source contributions. Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
+At the end of the workshop, we will sponsor a social event for teams to finalize their projects, mingle with like-minded practitioners and received the monetary prizes for best papers and projects.
+
+*You can pre-register for the hackathon + drinks event [here](https://lu.ma/jfuofoxl) (availability is limited)!*
+
+This repository provides an open dataset and all the tools necessary to participate in the hackathon: everything will go back to the community as open-source contributions. Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
 
 ### Important dates
 
@@ -133,8 +139,8 @@ You can refer to our colab notebooks to start playing with the dataset and under
 | Name            | Link     | 
 |-----------------|----------|
 | Tutorial 1 - Exploring the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1VXmCpL0YkLkf5_GTgJmLtd2b2A57CNjm?usp=sharing)|
-| Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QeXglfCUEcscHB6L0Gch2qDKDDlfwLlq?usp=sharing)|
-| Tutorial 3 - A Song Embedding Model on the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1hZJj5akr1cMP3QWWKXvD0MNoX4GimNb7?usp=sharing)|
+| Tutorial 2 - A Dummy Model In RecList on the EvalRS Dataset  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Cz9k8dIqzZ8Eetpv4aiihmpjp3TivIz7?usp=sharing)|
+| Tutorial 3 - A Song Embedding Model on the EvalRS Dataset | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1rE0nuXiDRqSEtSiubkDp-F2vKssRsJgT?usp=sharing)|
 | Tutorial 4 - A tutorial on building Retrieval Models (MF, Two-Tower) using Merlin| [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Ftl2B7BVFMfFjyjWweFCP_gA_LdCl7-a?usp=sharing)|
 | Appendix - How to Write a RecList | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1GVsVB1a3H9qbRQvwtb0TBDxq8A5nXc5w?usp=sharing)|
 
@@ -143,7 +149,7 @@ You can refer to our colab notebooks to start playing with the dataset and under
 Download the repo and setup a virtual environment. _NOTE_: the code has been developed and tested with Python 3.9: please use the same version for reproducibility.
 
 ```bash
-git clone https://github.com/RecList/evalRS-CIKM-2022
+git clone https://github.com/RecList/evalRS-KDD-2023
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -173,9 +179,9 @@ Please make sure the relevant Python packages from your tracking provider are in
 
 ### 3. Run evaluation on a real-world model
 
-[//]: # (TODO: add a code example in which we re-use an NVIDIA model and run the same eval as above)
+We also provide the saved predictions files from the baseline models trained on the EvalRS dataset with [Merlin tutorial](notebooks/merlin_tf_tutorial/).  
+You can use those prediction files to run the evaluation directly with RecList using this [notebook](notebooks/merlin_tf_tutorial/evalrs_kdd_2023_reclist_eval_on_saved_preds.ipynb).
 
-_TBC_
 
 ## Hackathon Structure and Rules
 
@@ -188,8 +194,8 @@ Examples could be operationalizing important notions of robustness, applying and
 ### Rules
 
 * The hackathon will start during the workshop and continue at the social gathering.
-* You do *not* need a paper in the workshop to partecipate: if you are in person, you need to register to the KDD workshop, if you're remote (see below) reach out to us directly.
-* Remote teams that are not able to join KDD in person can participate to the hackathon if willing to operate during the workshop hours: please send a message to `claudio dot pomo at poliba dot it` and `fede at stanford dot edu` if you're interested in partecipating remotely.
+* You do *not* need a paper in the workshop to participate: if you are in person, you need to register to the KDD workshop, if you're remote (see below) reach out to us directly.
+* Remote teams that are not able to join KDD in person can participate to the hackathon if willing to operate during the workshop hours: please send a message to `claudio dot pomo at poliba dot it` and `fede at stanford dot edu` if you're interested in participating remotely.
 * Teams can start working on their project before KDD, provided they will also work during the event and engage the other participants during the workshop.
 * The only dataset that can be used is the one provided with this repository (you can, of course, _augment_ it if you see fit): given the open-ended nature of the challenge, we are happy for participants to choose whatever tool they desire: for example, you can bring your own model or use the ones we provide if the point you are making is independent from any modelling choice. Please note that if you focus on offline code-based evaluation, re-using and extending the provided RecList provides bonus points, as our goal is to progressively standardize testing through a common library.
 * The deliverables for each team are two: 1) a public GitHub repository with an open source license containing whatever has been used for the project (e.g. code, materials, slides, charts); 2) a elevator pitch (video duration needs to be less than 3 minutes) to explain (using any narrative device: e.g. a demo, a demo and some slides, animations) the project: motivation, execution, learnings and why it is cool.
@@ -203,8 +209,6 @@ We invite participants to come up with interesting and original projects related
 * Did you recently train a new RecSys model and want to compare the new architecture vs an industry standard Merlin model using RecList?
 * Are you interested in data visualization / dataset exploration? Can you find where in the user (item) space the Merlin model we provide tend to underperform?
 * How much latent space metrics, such as ["being less wrong"](https://arxiv.org/abs/2111.09963), change when the underlying space is built through song2vec vs for example content-embeddings through lyrics?
- 
-_TBC_
 
 ### Prizes
 
@@ -253,13 +257,13 @@ This Hackathon and the related social event are possible thanks to the generous 
 
 ## Accepted Papers
 
-Authors | Title | Paper | Repo |
---- | --- | --- | ---
-Noble et Al | Realistic but Non-Identifiable Synthetic User Data Generation | [paper](/final_papers/EVALRS2023_paper_1.pdf) | [code]()
-Malitesta et Al | Disentangling the Performance Puzzle of Multimodal-aware Recommender Systems | [paper](/final_papers/EVALRS2023_paper_2.pdf) | [code]()
-Kasalický et Al | Bridging Offline-Online Evaluation with a Time-dependent and Popularity Bias-free Offline Metric for Recommenders | [paper](/final_papers/EVALRS2023_paper_3.pdf) | [code]()
-Selman et Al | Evaluating Recommendation Systems Using the Power of Embeddings | [paper](/final_papers/EVALRS2023_paper_4.pdf) | [code]()
-Singh et Al | Metric@CustomerN: Evaluating Metrics at a Customer Level in E-Commerce | [paper](/final_papers/EVALRS2023_paper_5.pdf) | [code]()
+Authors | Title
+--- | ---
+Noble et Al | [Realistic but Non-Identifiable Synthetic User Data Generation](/final_papers/EVALRS2023_paper_1.pdf)
+Malitesta et Al | [Disentangling the Performance Puzzle of Multimodal-aware Recommender Systems](/final_papers/EVALRS2023_paper_2.pdf)
+Kasalický et Al | [Bridging Offline-Online Evaluation with a Time-dependent and Popularity Bias-free Offline Metric for Recommenders](/final_papers/EVALRS2023_paper_3.pdf)
+Selman et Al | [Evaluating Recommendation Systems Using the Power of Embeddings](/final_papers/EVALRS2023_paper_4.pdf)
+Singh et Al | [Metric@CustomerN: Evaluating Metrics at a Customer Level in E-Commerce](/final_papers/EVALRS2023_paper_5.pdf)
 
 ## How to Cite
 
