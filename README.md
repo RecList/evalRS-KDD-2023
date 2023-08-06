@@ -235,7 +235,7 @@ This event focuses on building in the open, and adding lasting artifacts to the 
 
 ## Sponsors
 
-This Hackathon and the related social event are possible thanks to the generous support of these awesome folks. Make sure to add a star to [our library](https://github.com/jacopotagliabue/reclist) and check them out!
+This Hackathon and the related social event are possible thanks to the generous support of these awesome folks. Make sure to add a star to [our library](https://github.com/RecList/reclist) and check them out!
 
 
 <a href="https://mozilla.ai/" target="_blank">
