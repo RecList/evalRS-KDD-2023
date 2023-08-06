@@ -87,7 +87,7 @@ repsys server
 
 ### I want to play with the EvalRS dataset using RepSys and alter the dataset or define a new model and visualize it in RepSys (Docker version, not-optimized for ARM architecture of new Macbooks):
 
-RepSys can be run as a docker container with the implementation of the EvalRS 2023 dataset and its data mounted to a folder `/app` by adding `-v $HOME/<path-to-repsys-evalrs>:/app`. To run RepSys in a docker container, we can follow the steps explaining how to run RepSys installed from pypi with the modification that RepSys CLI is called as an entrypoint. Namely, we perform steps **P1**, **P2**, **P3** to download data and implementation of EvalRS dataset. Step *P4* is different because we will call RepSys CLI in the docker container instead of calling it directly:
+RepSys can be run as a docker container with the implementation of the EvalRS 2023 dataset and its data mounted to a folder `/app` by adding `-v $HOME/<path-to-repsys-evalrs>:/app`. To run RepSys in a docker container, we can follow the steps explaining how to run RepSys installed from pypi with the modification that RepSys CLI is called as an entrypoint. Namely, we perform steps **P1**, **P2**, **P3** to download data and implementation of EvalRS dataset. Step **P4** is different because we will call RepSys CLI in the docker container instead of calling it directly:
 ```
 docker run --rm -v $HOME/<path-to-repsys-evalrs>:/app kasape/repsys:kdd dataset split
 docker run --rm -v $HOME/<path-to-repsys-evalrs>:/app kasape/repsys:kdd model train
