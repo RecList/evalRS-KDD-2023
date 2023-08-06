@@ -39,11 +39,13 @@ class ELSA(BaseModel):
     def fit(self, training=False):
         device = self._torch_device()
         self.set_seed(self.config.seed)
-        self._model = ELSAModule(n_items=self.dataset.get_total_items(), device=device, n_dims=64)
-        checkpoint_path = self._checkpoint_path(extension='pth')
+        self._model = ELSAModule(
+            n_items=self.dataset.get_total_items(), device=device, n_dims=64
+        )
+        checkpoint_path = self._checkpoint_path(extension="pth")
         if training:
             X = self.dataset.get_train_data()
-            self._model.fit(X, batch_size=1024, epochs=5)
+            self._model.fit(X, batch_size=1024, epochs=3)
             self._create_checkpoints_dir()
             torch.save(self._model.state_dict(), checkpoint_path)
         else:
@@ -64,7 +66,9 @@ class ELSAModule(torch.nn.Module):
     Scalable Linear Shallow Autoencoder for Collaborative Filtering
     """
 
-    def __init__(self, n_items: int, n_dims: int, device: torch.device = None, lr: float = 0.1):
+    def __init__(
+        self, n_items: int, n_dims: int, device: torch.device = None, lr: float = 0.1
+    ):
         """
         Train model with given training data
 
@@ -78,7 +82,11 @@ class ELSAModule(torch.nn.Module):
             ELSA's weights will allocated on this device
         """
         super(ELSAModule, self).__init__()
-        W = torch.nn.Parameter(torch.nn.init.xavier_uniform_(torch.empty([n_items, n_dims])).detach().clone())
+        W = torch.nn.Parameter(
+            torch.nn.init.xavier_uniform_(torch.empty([n_items, n_dims]))
+            .detach()
+            .clone()
+        )
         self.__W_list = torch.nn.ParameterList([W])
         self.__device = device or torch.device("cuda")
         self.__items_cnt = n_items
@@ -140,9 +148,13 @@ class ELSAModule(torch.nn.Module):
         dict
             Contains list of metrics for each epoch, namely 'nmse_train' with 'cosine_train' and 'nmse_val' with 'cosine_val' when validation_data are given
         """
-        train_dataloader = self.__convert_data_to_dataloader(train_data, batch_size, shuffle, self.__device, "train_data")
+        train_dataloader = self.__convert_data_to_dataloader(
+            train_data, batch_size, shuffle, self.__device, "train_data"
+        )
         if validation_data is not None:
-            validation_dataloader = self.__convert_data_to_dataloader(validation_data, batch_size, shuffle, self.__device, "validation_data")
+            validation_dataloader = self.__convert_data_to_dataloader(
+                validation_data, batch_size, shuffle, self.__device, "validation_data"
+            )
         else:
             validation_dataloader = None
 
@@ -165,9 +177,13 @@ class ELSAModule(torch.nn.Module):
                     raise ValueError(
                         f"Number of items recognized by ELSA model is {self.__items_cnt}, but given data/dataloader yields data with second dimension {io_batch.shape[1]}."
                     )
-                loss, predictions = self.train_step(io_batch, io_batch)  # Input is also output, since ELSA is an autoencoder
+                loss, predictions = self.train_step(
+                    io_batch, io_batch
+                )  # Input is also output, since ELSA is an autoencoder
                 nmse_losses_per_epoch.append(loss.item())
-                cosine_losses_per_epoch.append(1 - torch.mean(self.__cosine(io_batch, predictions), dim=-1).item())
+                cosine_losses_per_epoch.append(
+                    1 - torch.mean(self.__cosine(io_batch, predictions), dim=-1).item()
+                )
                 if verbose:
                     log_dict = {
                         "Epoch": f"{epoch_index}/{epochs}",
@@ -199,7 +215,10 @@ class ELSAModule(torch.nn.Module):
                         nmse_losses_per_epoch.append(
                             self.__nmse(output, io_batch).item()
                         )
-                        cosine_losses_per_epoch.append(1 - torch.mean(self.__cosine(io_batch, output), dim=-1).item())
+                        cosine_losses_per_epoch.append(
+                            1
+                            - torch.mean(self.__cosine(io_batch, output), dim=-1).item()
+                        )
 
                 losses["nmse_val"].append(np.mean(nmse_losses_per_epoch))
                 losses["cosine_val"].append(np.mean(cosine_losses_per_epoch))
@@ -231,7 +250,9 @@ class ELSAModule(torch.nn.Module):
         if isinstance(device, str):
             device = torch.device(device)
         elif not isinstance(device, torch.device):
-            raise ValueError(f"Device must be specified by string or by torch.device instance, but '{type(device)}' was given.")
+            raise ValueError(
+                f"Device must be specified by string or by torch.device instance, but '{type(device)}' was given."
+            )
         self.__device = device
         for i, W in enumerate(self.__W_list):
             if W.device != self.__device:
@@ -256,7 +277,9 @@ class ELSAModule(torch.nn.Module):
         xAAT = torch.matmul(xA, A.T)
         return xAAT - x
 
-    def get_items_embeddings(self, as_numpy: bool = False) -> typing.Union[torch.Tensor, np.ndarray]:
+    def get_items_embeddings(
+        self, as_numpy: bool = False
+    ) -> typing.Union[torch.Tensor, np.ndarray]:
         """
         Get embeddings for all items as 2-dimensional Tensor (or numpy array if as_numpy=True) with dimensions (n_items, n_dims)
 
@@ -313,9 +336,13 @@ class ELSAModule(torch.nn.Module):
         elif isinstance(sources, torch.Tensor):
             sources = sources.to(self.__device)
         else:
-            raise ValueError(f"Supported datatypes for 'sources' parameter are 'np.ndarray' and 'torch.Tensor', but {type(sources)} was given.")
+            raise ValueError(
+                f"Supported datatypes for 'sources' parameter are 'np.ndarray' and 'torch.Tensor', but {type(sources)} was given."
+            )
         if sources.ndim > 1:
-            raise ValueError(f"Parameter 'sources' is expected to be 1-dimensional array, but {sources.ndim}-dimensional array was given.")
+            raise ValueError(
+                f"Parameter 'sources' is expected to be 1-dimensional array, but {sources.ndim}-dimensional array was given."
+            )
 
         sources_embeddings = item_embeddings[sources]
         if candidates is None:
@@ -325,15 +352,21 @@ class ELSAModule(torch.nn.Module):
         elif isinstance(candidates, torch.Tensor):
             candidates = candidates.to(self.__device)
         else:
-            raise ValueError(f"Supported datatypes for 'candidates' parameter are 'np.ndarray' and 'torch.Tensor', but {type(candidates)} was given.")
+            raise ValueError(
+                f"Supported datatypes for 'candidates' parameter are 'np.ndarray' and 'torch.Tensor', but {type(candidates)} was given."
+            )
         if candidates.ndim > 1:
-            raise ValueError(f"Parameter 'candidates' is expected to be 1-dimensional array, but {candidates.ndim}-dimensional array was given.")
+            raise ValueError(
+                f"Parameter 'candidates' is expected to be 1-dimensional array, but {candidates.ndim}-dimensional array was given."
+            )
 
         candidates_embeddings = item_embeddings[candidates]
         items_cnt = sources_embeddings.shape[0]
         source_batches_cnt = items_cnt // batch_size + int(items_cnt % batch_size > 0)
         if verbose:
-            print(f"Number of batches with size {batch_size} to compute cosine similarity and predict TopK is {source_batches_cnt}")
+            print(
+                f"Number of batches with size {batch_size} to compute cosine similarity and predict TopK is {source_batches_cnt}"
+            )
 
         neighbour_scores_list = []
         neighbour_indexes_list = []
@@ -350,13 +383,17 @@ class ELSAModule(torch.nn.Module):
                 torch.unsqueeze(candidates_embeddings.T, 0),
             )
             # Remove cos(a, a) = 1 from matrix by substracting -2 (to get -1) when source and candidate items are the same
-            cosine_similarites_in_batch -= 2 * (batch_source_indexes[:, None] == candidates).byte()
+            cosine_similarites_in_batch -= (
+                2 * (batch_source_indexes[:, None] == candidates).byte()
+            )
             (
                 neighbour_scores,
                 neighbour_indexes_to_candidates,
             ) = cosine_similarites_in_batch.topk(N)
             neighbour_scores_list.append(neighbour_scores.cpu())
-            neighbour_indexes_list.append(candidates[neighbour_indexes_to_candidates].cpu())
+            neighbour_indexes_list.append(
+                candidates[neighbour_indexes_to_candidates].cpu()
+            )
             source_items_processed_cnt += batch_len
             if verbose:
                 print(
@@ -393,7 +430,9 @@ class ELSAModule(torch.nn.Module):
             Predicted values for given data
         """
         shuffle = False
-        dataloader = self.__convert_data_to_dataloader(data, batch_size, shuffle, self.__device, "data")
+        dataloader = self.__convert_data_to_dataloader(
+            data, batch_size, shuffle, self.__device, "data"
+        )
         return torch.vstack(list(self.predict_generator(dataloader, batch_size)))
 
     def predict_generator(
@@ -421,7 +460,9 @@ class ELSAModule(torch.nn.Module):
             Return predicted tensors by batches
         """
         shuffle = False
-        dataloader = self.__convert_data_to_dataloader(data, batch_size, shuffle, self.__device, "data")
+        dataloader = self.__convert_data_to_dataloader(
+            data, batch_size, shuffle, self.__device, "data"
+        )
         for input_batch in dataloader:
             # Check that io_batch.shape[1] is the same as number of items in ELSA. If not, print reasonable error
             if input_batch.shape[1] != self.__items_cnt:
@@ -492,9 +533,13 @@ class ELSAModule(torch.nn.Module):
                     f"Batch size cannot be None for given '{parameter_name}' with datatype '{type(data)}'. Use 'batch_size' parameter to specify it"
                 )
             dataset = DenseMatrixDataset(data, device=device)
-            dataloader = torch.utils.data.dataloader.DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
+            dataloader = torch.utils.data.dataloader.DataLoader(
+                dataset, batch_size=batch_size, shuffle=shuffle
+            )
         else:
-            raise ValueError(f"Datatype '{type(data)}' for given '{parameter_name} is not supported")
+            raise ValueError(
+                f"Datatype '{type(data)}' for given '{parameter_name} is not supported"
+            )
         return dataloader
 
     @staticmethod
@@ -507,12 +552,14 @@ class NMSELoss(torch.nn.Module):
         return torch.nn.functional.mse_loss(
             torch.nn.functional.normalize(input, dim=-1),
             torch.nn.functional.normalize(target, dim=-1),
-            reduction='mean'
+            reduction="mean",
         )
 
 
 class DenseMatrixDataset(torch.utils.data.Dataset):
-    def __init__(self, dense_matrix: typing.Union[np.ndarray, np.matrix], device: torch.device):
+    def __init__(
+        self, dense_matrix: typing.Union[np.ndarray, np.matrix], device: torch.device
+    ):
         if isinstance(dense_matrix, np.matrix):
             self.ndarray = dense_matrix.A
         else:

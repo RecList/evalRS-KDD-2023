@@ -1,4 +1,4 @@
-FROM kasape/repsys:latest
+FROM kasape/repsys:0.4.1
 
 COPY requirements.txt .
 RUN pip install --upgrade pip \

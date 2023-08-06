@@ -34,19 +34,22 @@ class EvalRS(Dataset):
             while True:
                 before = x
                 # Replace nan on the beginning
-                x = x.replace('[nan, ', '[')
+                x = x.replace("[nan, ", "[")
                 # Replace nan in the middle
-                x = x.replace(',nan,', ',')
-                x = x.replace(', nan,', ',')
+                x = x.replace(",nan,", ",")
+                x = x.replace(", nan,", ",")
                 # Replace nan in the end
-                x = x.replace(', nan]', ']')
-                x = x.replace(',nan]', ']')
+                x = x.replace(", nan]", "]")
+                x = x.replace(",nan]", "]")
                 # Replace nan when it's the only element
-                x = x.replace('[nan]', '""')
+                x = x.replace("[nan]", '""')
                 if before == x:
                     break
             return x
-        albums_decoded = albums.apply(lambda x: list(set(ast.literal_eval(remove_nan(x)))))
+
+        albums_decoded = albums.apply(
+            lambda x: list(set(ast.literal_eval(remove_nan(x))))
+        )
         return albums_decoded
 
     @staticmethod
@@ -58,45 +61,69 @@ class EvalRS(Dataset):
             return EvalRS.TAG_SEPARATOR.join(vals)
 
     def load_items(self):
-        tracks = pd.read_parquet('./data/evalrs_tracks.parquet')[['track_id', 'track', 'albums', 'artist', 'lastfm_id']]
-        emotion_tags = pd.read_parquet('./data/evalrs_emotion_tags.parquet')
-        social_tags = pd.read_parquet('./data/evalrs_social_tags.parquet')
+        tracks = pd.read_parquet("./data/evalrs_tracks.parquet")[
+            ["track_id", "track", "albums", "artist", "lastfm_id"]
+        ]
+        emotion_tags = pd.read_parquet("./data/evalrs_emotion_tags.parquet")
+        social_tags = pd.read_parquet("./data/evalrs_social_tags.parquet")
 
-        albums = self.__parse_albums(tracks['albums'])
+        albums = self.__parse_albums(tracks["albums"])
         # unique_albums = set([album for sublist in albums.tolist() for album in sublist])
         # There are 754521 unique album names, that's too much to use them as tags for vizualization.
         # We will case convert the list of album names to one short string as description
-        tracks['albums_description'] = albums.apply(lambda x: f"Albums: {x[0]}, {x[1]} and {len(x) - 2} others" if len(x) > 3 else "Albums: " + ", ".join(x))
+        tracks["albums_description"] = albums.apply(
+            lambda x: f"Albums: {x[0]}, {x[1]} and {len(x) - 2} others"
+            if len(x) > 3
+            else "Albums: " + ", ".join(x)
+        )
         # For recommendation based on the album, it's possible to train a token model (leave it to the hackaton)
 
         # There are only 197 unique emotion_tags (not including their weights) so we use them as tags for vizualization
         tracks_with_tags = tracks.merge(
-            emotion_tags.groupby('lastfm_id')['emotion_tags_value'].apply(lambda x: self.__join_with_nan(x)).reset_index(),
-            on='lastfm_id', how='left'
+            emotion_tags.groupby("lastfm_id")["emotion_tags_value"]
+            .apply(lambda x: self.__join_with_nan(x))
+            .reset_index(),
+            on="lastfm_id",
+            how="left",
         )
         # There are 387380 unique social tags, that's too much for vizualization in RepSys.
         # Tag are provided for 119330 different lastfm_id values (tracks).
         # If we take only the most popular 200 social tags, we cover 114628 (96%) of all tracks and we can visualize them:
-        selected_social_tags = social_tags.groupby('social_tags_value').size().sort_values(ascending=False).head(200)
-        in_selected = social_tags['social_tags_value'].isin(selected_social_tags.index)
-        tracks_with_tags = tracks_with_tags.merge(
-            social_tags[in_selected].groupby('lastfm_id')['social_tags_value'].apply(lambda x: self.__join_with_nan(x)).reset_index(),
-            on='lastfm_id', how='left'
+        selected_social_tags = (
+            social_tags.groupby("social_tags_value")
+            .size()
+            .sort_values(ascending=False)
+            .head(200)
         )
-        tracks_with_tags.rename(columns={'emotion_tags_value': 'emotion_tags', 'social_tags_value': 'social_tags'}, inplace=True)
+        in_selected = social_tags["social_tags_value"].isin(selected_social_tags.index)
+        tracks_with_tags = tracks_with_tags.merge(
+            social_tags[in_selected]
+            .groupby("lastfm_id")["social_tags_value"]
+            .apply(lambda x: self.__join_with_nan(x))
+            .reset_index(),
+            on="lastfm_id",
+            how="left",
+        )
+        tracks_with_tags.rename(
+            columns={
+                "emotion_tags_value": "emotion_tags",
+                "social_tags_value": "social_tags",
+            },
+            inplace=True,
+        )
         return tracks_with_tags
 
     def load_interactions(self):
-        df = pd.read_parquet('./data/evalrs_events.parquet')
-        return df[['user_id', 'track_id']]
+        df = pd.read_parquet("./data/evalrs_events.parquet")
+        return df[["user_id", "track_id"]]
 
     def web_default_config(self):
         return {
             "mappings": {
                 "title": "track",
-                "subtitle": "social_tags",
-                "caption": "artist",
-                "content": "albums_description"
+                "subtitle": "artist",
+                "caption": "social_tags",
+                "content": "albums_description",
             },
             "recommenders": [
                 {
@@ -105,18 +132,18 @@ class EvalRS(Dataset):
                     "modelParams": {"social_tags": "summer"},
                 },
                 {
-                    "name": "Heartbreaking Rock recommended by KNN",
+                    "name": "Heartbreaking Rock by KNN",
                     "model": "knn",
-                    "modelParams": {"social_tags": "rock", "emotion_tags": "heartbreaking"},
+                    "modelParams": {
+                        "social_tags": "rock",
+                        "emotion_tags": "heartbreaking",
+                    },
                 },
                 {
                     "name": "The most popular funeral songs",
                     "model": "pop",
                     "modelParams": {"emotion_tags": "funeral"},
                 },
-                {
-                    "name": "Selected by ELSA",
-                    "model": "elsa"
-                },
+                {"name": "Selected by ELSA", "model": "elsa"},
             ],
         }

@@ -8,7 +8,7 @@ from repsys.ui import Select
 
 class BaseModel(Model, ABC):
     def _checkpoint_path(self, extension: str = "npy"):
-        if extension.startswith('.'):
+        if extension.startswith("."):
             extension = extension[1:]
         return os.path.join("./.repsys_checkpoints", f"{self.name()}.{extension}")
 
@@ -18,7 +18,7 @@ class BaseModel(Model, ABC):
             os.makedirs(dir_path, exist_ok=True)
 
     def _mask_items(self, X_predict, item_indices):
-        mask = np.ones(self.dataset.items.shape[0], dtype=np.bool)
+        mask = np.ones(self.dataset.items.shape[0], dtype=bool)
         mask[item_indices] = 0
         X_predict[:, mask] = 0
 
