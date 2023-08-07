@@ -11,5 +11,4 @@ Kasalický et Al | Bridging Offline-Online Evaluation with a Time-dependent and 
 Selman et Al | Evaluating Recommendation Systems Using the Power of Embeddings | [paper](/papers/EVALRS2023_paper_4.pdf)
 Singh et Al | Metric@CustomerN: Evaluating Metrics at a Customer Level in E-Commerce | [paper](/papers/EVALRS2023_paper_5.pdf)
 
-
-These papers also appear in official [EvalRS2023 Proceedings](https://ceur-ws.org/Vol-xxxx/) [available ASAP].
+These papers also appear in official [EvalRS2023 Proceedings](https://ceur-ws.org/Vol-3450/).
