@@ -239,7 +239,7 @@ This Hackathon and the related social event are possible thanks to the generous 
 
 
 <a href="https://mozilla.ai/" target="_blank">
-    <img src="images/mozai.svg" width="100"/>
+    <img src="images/mzai_logo.jpg" width="100"/>
 </a>
 
 <a href="https://snap.com/en-US" target="_blank">
