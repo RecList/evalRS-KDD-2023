@@ -257,6 +257,8 @@ This Hackathon and the related social event are possible thanks to the generous 
 
 ## Accepted Papers
 
+The proceedings are available on [CEUR](https://ceur-ws.org/Vol-3450/).
+
 Authors | Title
 --- | ---
 Noble et Al | [Realistic but Non-Identifiable Synthetic User Data Generation](/final_papers/EVALRS2023_paper_1.pdf)
