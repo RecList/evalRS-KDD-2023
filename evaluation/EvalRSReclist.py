@@ -169,6 +169,36 @@ class EvalRSReclist(RecList):
         miss_pred_vectors = self.similarity_model[self._y_preds.loc[misses, '0'].values.reshape(-1)]
 
         return float(self.cosine_sim(miss_gt_vectors, miss_pred_vectors).mean())
+
+    @rec_test('POSITION_WEIGHTED_WRONGNESS_DISTANCE')
+    def position_weighted_wrongess_distance(self):
+        y_test_mask = ~self._y_test.isna().values  # N x M
+        y_pred_mask = ~self._y_preds.isna().values[:, :TOP_K_CHALLENGE]  # N x k
+
+        y_test = self._y_test.values[:, :, None]  # N x M x 1
+        y_pred = self._y_preds.values[:, None, :TOP_K_CHALLENGE]  # N x 1 x k
+
+        res = []
+        for i in range(y_test_mask.shape[0]):
+            user_res = 0
+            for j in range(y_test_mask.shape[1]):
+                for l in range(y_pred_mask.shape[1]):
+                    idx1 = y_test[i, j, 0]
+                    idx2 = y_pred[i, 0, l]
+                    vector1 = self.similarity_model[idx1]
+                    vector2 = self.similarity_model[idx2]
+                    similarity = self.cosine_sim(vector1, vector2)
+                    # Penalize more if test position is higher
+                    position_penalty = 1 / (j + 1 + 1e-6)
+
+                    # Penalize more for larger position difference
+                    position_difference = abs(j - l)
+                    position_difference_penalty = 1 / (position_difference + 1 + 1e-6)
+
+                    user_res += similarity * position_penalty * position_difference_penalty
+            res.append(user_res)
+
+        return np.mean(res)
     
 
 class EvalRSSimpleModel:
