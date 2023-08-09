@@ -197,7 +197,7 @@ Examples could be operationalizing important notions of robustness, applying and
 * Teams can start working on their project before KDD, provided they will also work during the event and engage the other participants during the workshop.
 * The only dataset that can be used is the one provided with this repository (you can, of course, _augment_ it if you see fit): given the open-ended nature of the challenge, we are happy for participants to choose whatever tool they desire: for example, you can bring your own model or use the ones we provide if the point you are making is independent from any modelling choice. Please note that if you focus on offline code-based evaluation, re-using and extending the provided RecList provides bonus points, as our goal is to progressively standardize testing through a common library.
 * The deliverables for each team are two: 1) a public GitHub repository with an open source license containing whatever has been used for the project (e.g. code, materials, slides, charts); 2) a elevator pitch (video duration needs to be less than 3 minutes) to explain (using any narrative device: e.g. a demo, a demo and some slides, animations) the project: motivation, execution, learnings and why it is cool.
-* Based on the materials submitted and the elevator pitch, the organizers will determine the winners at their sole discretion and award the prizes at the social event the evening of Aug. 7th (location TBD).
+* Based on the materials submitted and the elevator pitch, the organizers will determine the winners at their sole discretion and award the prizes at the social event the evening of Aug. 7th.
 
 ### Inspiration
 
@@ -265,11 +265,11 @@ The proceedings are available on [CEUR](https://ceur-ws.org/Vol-3450/).
 
 Authors | Title
 --- | ---
-Noble et Al | [Realistic but Non-Identifiable Synthetic User Data Generation](/final_papers/EVALRS2023_paper_1.pdf)
-Malitesta et Al | [Disentangling the Performance Puzzle of Multimodal-aware Recommender Systems](/final_papers/EVALRS2023_paper_2.pdf)
-Kasalický et Al | [Bridging Offline-Online Evaluation with a Time-dependent and Popularity Bias-free Offline Metric for Recommenders](/final_papers/EVALRS2023_paper_3.pdf)
-Selman et Al | [Evaluating Recommendation Systems Using the Power of Embeddings](/final_papers/EVALRS2023_paper_4.pdf)
-Singh et Al | [Metric@CustomerN: Evaluating Metrics at a Customer Level in E-Commerce](/final_papers/EVALRS2023_paper_5.pdf)
+Noble et Al | [Realistic but Non-Identifiable Synthetic User Data Generation](/papers/EVALRS2023_paper_1.pdf)
+Malitesta et Al | [Disentangling the Performance Puzzle of Multimodal-aware Recommender Systems](/papers/EVALRS2023_paper_2.pdf)
+Kasalický et Al | [Bridging Offline-Online Evaluation with a Time-dependent and Popularity Bias-free Offline Metric for Recommenders](/papers/EVALRS2023_paper_3.pdf)
+Selman et Al | [Evaluating Recommendation Systems Using the Power of Embeddings](/papers/EVALRS2023_paper_4.pdf)
+Singh et Al | [Metric@CustomerN: Evaluating Metrics at a Customer Level in E-Commerce](/papers/EVALRS2023_paper_5.pdf)
 
 ## How to Cite
 
