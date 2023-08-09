@@ -23,7 +23,7 @@ _If you are reading this after the event on Aug. 7th, 2023, do not stop scrollin
 
 ## After-party
 
-We hosted a [social event](https://lu.ma/jfuofoxl) after the workshop for networking, awards and fun times with the community (some pictures from the EvalRS day can be found [here](https://lu.ma/jfuofoxl)).
+We hosted a [social event](https://lu.ma/jfuofoxl) after the workshop for networking, awards and fun times with the community (some pictures from the EvalRS day can be found [here](https://photos.app.goo.gl/xs8NkTxkxgQEiDxk9)).
 
 ## Overview
 
