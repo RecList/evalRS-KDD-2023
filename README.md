@@ -7,7 +7,9 @@ Official Repository for EvalRS @ KDD 2023, the Second Edition of the workshop on
 
 ## Status
 
-_The repository is stable and ready to be used for the hackathon_ (pending minor changes, fixes etc.)
+The repository is stable and ready to be used for tutorials, educational purposes, research, benchmarks of any kind,  hackathons etc. 
+
+_If you are reading this after the event on Aug. 7th, 2023, do not stop scrolling: all the materials are available to the community and will always be!_
 
 ## Quick Start
 
@@ -21,7 +23,7 @@ _The repository is stable and ready to be used for the hackathon_ (pending minor
 
 ## After-party
 
-The social event (see below) after the workshop for networking, awards and fun times with the community has been announced: pre-register [here](https://lu.ma/jfuofoxl)!
+We hosted a [social event](https://lu.ma/jfuofoxl) after the workshop for networking, awards and fun times with the community (some pictures from the EvalRS day can be found [here](https://lu.ma/jfuofoxl)).
 
 ## Overview
 
@@ -31,20 +33,18 @@ Aside from papers and talks, we will host a hackathon, where participants will p
 
 At the end of the workshop, we will sponsor a social event for teams to finalize their projects, mingle with like-minded practitioners and received the monetary prizes for best papers and projects.
 
-*You can pre-register for the hackathon + drinks event [here](https://lu.ma/jfuofoxl) (availability is limited)!*
-
 This repository provides an open dataset and all the tools necessary to participate in the hackathon: everything will go back to the community as open-source contributions. Please refer to the appropriate sections below to know how to get the dataset and run the evaluation loop properly.
 
 ### Important dates
 
-Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official timeline, including the start date, paper submission, and workshop schedule.
+Check the [EvalRS website](https://reclist.io/kdd2023-cup/) for the official timeline.
 
 ### Quick links
 
 * 🛖 [EvalRS website](https://reclist.io/kdd2023-cup/)
 * 📚 [EvalRS paper](https://arxiv.org/abs/2304.07145)
 * 📖 [RecList website](https://reclist.io/)
-
+* 📷 [Pictures from the EvalRS day at KDD](https://photos.app.goo.gl/xs8NkTxkxgQEiDxk9)
 
 ## Dataset and target scenario
 
@@ -83,11 +83,9 @@ _Topics_: a collection of 60-dimensional sparse descriptors representing the top
 
 ![https://github.com/micbuffa/WasabiDataset/](images/topics.png)
 
-
 _Song Embeddings_: 768-dimensional SentenceBERT embeddings calculated, using the `all-mpnet-base-v2` pretrained model, on song lyrics. For each of the tracks for which lyrics were available (47% of the total number of unique songs), both embeddings calculated on the full *song* and concatenation of embeddings calculated on individual *verses* are available.
 
 ![https://sbert.net/docs/pretrained_models.html](images/embeddings.png)
-
 
 **NOTE** that verse embeddings are quite **large** (~35GB) so they are stored as multiple parquet files, split by initial letter of band name (see an example on how to load the embeddings [here](notebooks/eda-on-the-evalrs-dataset.ipynb)). 
 
@@ -212,12 +210,19 @@ We invite participants to come up with interesting and original projects related
 
 ### Prizes
 
-Thanks to our generous sponsors, the following prizes will be awarded (at the sole discretion of the committee):
+Thanks to our generous sponsors, the following prizes are awarded (at the sole discretion of the committee):
 
 * a winner prize, 2000 USD, for the best hackathon project;
 * a runner-up prize, 500 USD, for the second best hackathon project;
 * a best paper award prize of 500 USD;
 * a best student paper award prize of 500 USD.
+
+### Winners
+
+* the GrubHub team won the prize for the best hackathon project;
+* the Hinge + Rubber Ducky Labs team won the prize for second best hackathon project;
+* the best paper award was won by the paper by Noble et al.;
+* the best student paper award was won by the paper by Petr Kasalický et al.
 
 ## Organizers 
 
@@ -236,7 +241,6 @@ This event focuses on building in the open, and adding lasting artifacts to the 
 ## Sponsors
 
 This Hackathon and the related social event are possible thanks to the generous support of these awesome folks. Make sure to add a star to [our library](https://github.com/RecList/reclist) and check them out!
-
 
 <a href="https://mozilla.ai/" target="_blank">
     <img src="images/mzai_logo.jpg" width="100"/>
