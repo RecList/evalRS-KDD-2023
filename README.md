@@ -265,9 +265,9 @@ The proceedings are available on [CEUR](https://ceur-ws.org/Vol-3450/).
 
 Authors | Title
 --- | ---
-Noble et Al | [Realistic but Non-Identifiable Synthetic User Data Generation](/papers/EVALRS2023_paper_1.pdf)
+Noble et Al | [Realistic but Non-Identifiable Synthetic User Data Generation](/papers/EVALRS2023_paper_1.pdf) (Best Paper)
 Malitesta et Al | [Disentangling the Performance Puzzle of Multimodal-aware Recommender Systems](/papers/EVALRS2023_paper_2.pdf)
-Kasalický et Al | [Bridging Offline-Online Evaluation with a Time-dependent and Popularity Bias-free Offline Metric for Recommenders](/papers/EVALRS2023_paper_3.pdf)
+Kasalický et Al | [Bridging Offline-Online Evaluation with a Time-dependent and Popularity Bias-free Offline Metric for Recommenders](/papers/EVALRS2023_paper_3.pdf) (Best Student Paper)
 Selman et Al | [Evaluating Recommendation Systems Using the Power of Embeddings](/papers/EVALRS2023_paper_4.pdf)
 Singh et Al | [Metric@CustomerN: Evaluating Metrics at a Customer Level in E-Commerce](/papers/EVALRS2023_paper_5.pdf)
 
